@@ -63,37 +63,43 @@ use Illuminate\Support\Facades\Session;
         Route::post('/general_imagen',     'Admin\AdminController@general_imagen');
 
         //::::::::::::::::::::::: ADMIN CONTROLLER HOME ::::::::::::::::::::::::::
-        Route::get('/admin_home_slider',                          'Admin\HomeController@admin_home_slider');
-        Route::post('/admin_home_slider_edit',                    'Admin\HomeController@admin_home_slider_edit');
-        Route::post('/admin_home_slider_update',                  'Admin\HomeController@admin_home_slider_update');
-        Route::get('/admin_home_bienvenidos',                     'Admin\HomeController@admin_home_bienvenidos');
-        Route::post('/admin_home_bienvenidos_update_text',        'Admin\HomeController@admin_home_bienvenidos_update_text');
-        Route::post('/admin_home_bienvenidos_update_image',       'Admin\HomeController@admin_home_bienvenidos_update_image');
-        Route::post('/admin_home_footer_update',                  'Admin\HomeController@admin_home_footer_update');
-        Route::get('/admin_ventajas',                             'Admin\HomeController@admin_ventajas');
+        Route::get('/admin_home_slider',                            'Admin\HomeController@admin_home_slider');
+        Route::post('/admin_home_slider_edit',                      'Admin\HomeController@admin_home_slider_edit');
+        Route::post('/admin_home_slider_update',                      'Admin\HomeController@admin_home_slider_update');
+
+
+        Route::get('/admin_home_bienvenidos',                       'Admin\HomeController@admin_home_bienvenidos');
+        Route::post('/admin_home_bienvenidos_update_text',          'Admin\HomeController@admin_home_bienvenidos_update_text');
+        Route::post('/admin_home_bienvenidos_update_image',         'Admin\HomeController@admin_home_bienvenidos_update_image');
+        Route::post('/admin_home_footer_update',                    'Admin\HomeController@admin_home_footer_update');
+
+        Route::get('/admin_ventajas',                            'Admin\HomeController@admin_ventajas');
         Route::post('/admin_ventajas_update',                     'Admin\HomeController@admin_ventajas_update');
-        Route::get('/admin_nuestra_actividad',                    'Admin\HomeController@admin_nuestra_actividad');
-        Route::get('/listData_NuestraActividad',                  'Admin\HomeController@listData_NuestraActividad');
-        Route::post('/editData_NuestraActividad',                 'Admin\HomeController@editData_NuestraActividad');
-        Route::post('/selectData_NuestraActividad',               'Admin\HomeController@selectData_NuestraActividad');
-        Route::get('/admin_nuestro_estudio',                      'Admin\HomeController@admin_nuestro_estudio');
-        Route::get('/listarGaleriaDataTable',                     'Admin\HomeController@listarGaleriaDataTable');
-        Route::post('/createServicioGaleria',                     'Admin\HomeController@createServicioGaleria');
-        Route::post('/editServicioGaleria',                       'Admin\HomeController@editServicioGaleria');
-        Route::post('/editData_NuestroEstudio',                   'Admin\HomeController@editData_NuestroEstudio');
+
+        Route::get('/admin_nuestra_actividad',                  'Admin\HomeController@admin_nuestra_actividad');
+        Route::get('/listData_NuestraActividad',                'Admin\HomeController@listData_NuestraActividad');
+        Route::post('/editData_NuestraActividad',               'Admin\HomeController@editData_NuestraActividad');
+        Route::post('/selectData_NuestraActividad',             'Admin\HomeController@selectData_NuestraActividad');
+
+
+        Route::get('/admin_nuestro_estudio',         'Admin\HomeController@admin_nuestro_estudio');
+        Route::get('/listarGaleriaDataTable',        'Admin\HomeController@listarGaleriaDataTable');
+        Route::post('/createServicioGaleria',        'Admin\HomeController@createServicioGaleria');
+        Route::post('/editServicioGaleria',          'Admin\HomeController@editServicioGaleria');
+        Route::post('/editData_NuestroEstudio',      'Admin\HomeController@editData_NuestroEstudio');
 
 
         //::::::::::::::::::::::: ADMIN CONTROLLER QUIENES SOMOS ::::::::::::::::::::::::::
-        Route::get('/admin_quienes_somos',                      'Admin\QuienesSomosController@admin_quienes_somos');
-        Route::post('/admin_quienes_somos_update',              'Admin\QuienesSomosController@admin_quienes_somos_update');
+        Route::get('/admin_quienes_somos',             'Admin\QuienesSomosController@admin_quienes_somos');
+        Route::post('/admin_quienes_somos_update',     'Admin\QuienesSomosController@admin_quienes_somos_update');
 
         //::::::::::::::::::::::: ADMIN CONTROLLER QUE HACEMOS ::::::::::::::::::::::::::
-        Route::get('/admin_quehacemos',                         'Admin\QueHacemosController@admin_quehacemos');
-        Route::post('/admin_quehacemos_update',                 'Admin\QueHacemosController@admin_quehacemos_update');
+        Route::get('/admin_quehacemos',             'Admin\QueHacemosController@admin_quehacemos');
+        Route::post('/admin_quehacemos_update',     'Admin\QueHacemosController@admin_quehacemos_update');
 
         //::::::::::::::::::::::: WEB CONTROLLER MEDICINA CELULAR ::::::::::::::::::::::::::
-        Route::get('/admin_medicinacelular',                    'Admin\MedicinaCelularController@admin_medicinacelular');
-        Route::post('/admin_medicinacelular_update',            'Admin\MedicinaCelularController@admin_medicinacelular_update');
+        Route::get('/admin_medicinacelular',             'Admin\MedicinaCelularController@admin_medicinacelular');
+        Route::post('/admin_medicinacelular_update',     'Admin\MedicinaCelularController@admin_medicinacelular_update');
 
         //::::::::::::::::::::::: WEB CONTROLLER LA ALIANZA ::::::::::::::::::::::::::
         Route::get('/admin_alianza',                            'Admin\LaAlianzaController@admin_alianza');
@@ -115,12 +121,12 @@ use Illuminate\Support\Facades\Session;
         Route::post('/admin_grupo_barcelona_update',            'Admin\LaAlianzaController@admin_grupo_barcelona_update');
 
         //::::::::::::::::::::::: WEB CONTROLLER INVESTIGACION ::::::::::::::::::::::::::
-        Route::get('/admin_investigacion',                      'Admin\InsInvestigacionController@admin_investigacion');
-        Route::post('/admin_investigacion_update',              'Admin\InsInvestigacionController@admin_investigacion_update');
+        Route::get('/admin_investigacion',             'Admin\InsInvestigacionController@admin_investigacion');
+        Route::post('/admin_investigacion_update',     'Admin\InsInvestigacionController@admin_investigacion_update');
 
         //::::::::::::::::::::::: WEB CONTROLLER FUNDACION ::::::::::::::::::::::::::
-        Route::get('/admin_fundacion',                          'Admin\FundacionController@admin_fundacion');
-        Route::post('/admin_fundacion_update',                  'Admin\FundacionController@admin_fundacion_update');
+        Route::get('/admin_fundacion',             'Admin\FundacionController@admin_fundacion');
+        Route::post('/admin_fundacion_update',     'Admin\FundacionController@admin_fundacion_update');
 
         //::::::::::::::::::::::: WEB CONTROLLER PUBLICACION ::::::::::::::::::::::::::
         Route::get('/admin_publicacion_internacional',                  'Admin\PublicacionesController@admin_publicacion_internacional');
@@ -151,8 +157,8 @@ use Illuminate\Support\Facades\Session;
         Route::post('/admin_boletines_update',                          'Admin\PublicacionesController@admin_boletines_update');
 
         //::::::::::::::::::::::: WEB CONTROLLER PROFESIONAL ::::::::::::::::::::::::::
-        Route::get('/admin_profesional',                 'Admin\ProfesionalesController@admin_profesional');
-        Route::post('/admin_profesional_update',         'Admin\ProfesionalesController@admin_profesional_update');
+        Route::get('/admin_profesional',                        'Admin\ProfesionalesController@admin_profesional');
+        Route::post('/admin_profesional_update',                'Admin\ProfesionalesController@admin_profesional_update');
 
 
         //::::::::::::::::::::::: WEB CONTROLLER ACTIVIDAD ::::::::::::::::::::::::::
@@ -168,16 +174,16 @@ use Illuminate\Support\Facades\Session;
         Route::get('/listarDataTableInfo',               'Admin\ServicioController@listarDataTableInfo');
 
         //::::::::::::::::::::::: CONTROLLER SERVICIO: CRUD DE SERVICIOS ::::::::::::::::::::::::::
-        Route::get('/adminServicioHello',                'Admin\ServicioController@adminServicioHello');
-        Route::post('/createServicioTraining',           'Admin\ServicioController@createServicioTraining');
-        Route::post('/editServicioTraining',             'Admin\ServicioController@editServicioTraining');
-        Route::get('/listarDataTable',                   'Admin\ServicioController@listarDataTable');
+        Route::get('/adminServicioHello',               'Admin\ServicioController@adminServicioHello');
+        Route::post('/createServicioTraining',          'Admin\ServicioController@createServicioTraining');
+        Route::post('/editServicioTraining',            'Admin\ServicioController@editServicioTraining');
+        Route::get('/listarDataTable',                  'Admin\ServicioController@listarDataTable');
 
         //::::::::::::::::::::::: CONTROLLER SERVICIO: CRUD DE TITULO ::::::::::::::::::::::::::
-        Route::get('/adminServicioTitulo',               'Admin\ServicioController@adminServicioTitulo');
-        Route::get('/listarDataTableTitulo',             'Admin\ServicioController@listarDataTableTitulo');
-        Route::post('/servicioGrabarTitulo',             'Admin\ServicioController@servicioGrabarTitulo');
-        Route::post('/servicioEditarTitulo',             'Admin\ServicioController@servicioEditarTitulo');
+        Route::get('/adminServicioTitulo',              'Admin\ServicioController@adminServicioTitulo');
+        Route::get('/listarDataTableTitulo',            'Admin\ServicioController@listarDataTableTitulo');
+        Route::post('/servicioGrabarTitulo',            'Admin\ServicioController@servicioGrabarTitulo');
+        Route::post('/servicioEditarTitulo',            'Admin\ServicioController@servicioEditarTitulo');
          
     });
 

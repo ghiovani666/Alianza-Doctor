@@ -110,6 +110,7 @@ class ServicioController extends Controller {
 
   public function adminServicioHello() {
     $rowDataInfo = DB::table('web_servicio_descripcion')
+    // ->where("id_descripcion",$request->txt_id_descripcion)
     ->get();
 
     $rowData_cb_ = DB::table('web_servicio')->get();
@@ -194,12 +195,64 @@ class ServicioController extends Controller {
 
                   break;
 
-                case 'ELIMINAR': 
+        case 'ELIMINAR': 
 
-                  DB::table('web_servicio_descripcion')->where('id_descripcion', '=', $request->txt_id_descripcion)->delete();
-                  return json_encode(['data' => 'Elimino el registro correctamente!','state' => 'ok']);
+          DB::table('web_servicio_descripcion')->where('id_descripcion', '=', $request->txt_id_descripcion)->delete();
+          return json_encode(['data' => 'Elimino el registro correctamente!','state' => 'ok']);
 
-                break;
+        break;
+
+        case 'INFORMACION': 
+
+          var_dump("aquiiiiiiiiiiiiii");
+          var_dump($request->txt_id_descripcion);
+          var_dump($request->info_url_image);
+          var_dump($request->txt_sub_titulo);
+          // exit();
+          $file = $request->file('image');
+
+        if($file != NULL){
+          $url_imagen =  DB::table('web_servicio_descripcion')->where('id_descripcion', '=', $request->txt_id_descripcion)->get();
+        
+          if(file_exists(str_replace('/template_admin/', 'template_admin/',  $url_imagen[0]->info_url_image))){
+            unlink(str_replace('/template_admin/', 'template_admin/',  $url_imagen[0]->info_url_image));
+          }
+          
+            $filename  =  time() .'_'.$file->getClientOriginalName(); 
+            $path = "template_admin/img/mc_charlas";
+            $file->move($path,$filename); 
+
+            $result  =  DB::table('web_servicio_descripcion')
+              ->where("id_descripcion",$request->txt_id_descripcion)
+              ->update([
+
+                'info_titulo_heder' => $request->txt_info_titulo_heder, 
+                'info_titulo_descripcion' => $request->txt_info_titulo_descripcion, 
+                'info_titulo' => $request->txt_sub_titulo, 
+                'info_descripcion' => $request->txt_descripcion,
+                'info_url_image' => '/template_admin/img/mc_charlas/'.$filename, 
+                'updated_at' =>date("Y-m-d H:i:s")
+                
+              ]); 
+
+              return json_encode(['data' => 'Se registro correctamente!','state' => 'ok','src' => '/template_admin/img/mc_charlas/'.$filename]);
+
+          }else{
+            $result  =  DB::table('web_servicio_descripcion')
+              ->where("id_descripcion",$request->txt_id_descripcion)
+              ->update([
+
+                'info_titulo_heder' => $request->txt_info_titulo_heder, 
+                'info_titulo_descripcion' => $request->txt_info_titulo_descripcion, 
+                'info_titulo' => $request->txt_sub_titulo, 
+                'info_descripcion' => $request->txt_descripcion,
+                'updated_at' =>date("Y-m-d H:i:s")
+                
+              ]); 
+            return json_encode(['data' => 'Se registro correctamente!','state' => 'ok']);
+          }
+
+          break;
 
       }
  }
@@ -230,12 +283,16 @@ class ServicioController extends Controller {
      
       return view('admin.servicios.ajax.tablaServicio')->with(compact('rowData_'));
     }
- 
+
+
+
+   
     public function admin_servicio_update(Request $request) 
     {       
         $data =  DB::table('web_servicio_descripcion')->where("id_descripcion", $request->txt_id_descripcion)->update(['info_descripcion' => $request->txt_descripcion_info]); 
         return $data;
     }
+
 
     public function listarDataTableInfo(Request $request) {
       
@@ -243,6 +300,21 @@ class ServicioController extends Controller {
      
       return view('admin.servicios.ajax.tablaServicioInfo')->with(compact('rowData_'));
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
 
     public function changeServicioTraining(Request $request)
     {
@@ -253,4 +325,86 @@ class ServicioController extends Controller {
           }
         return $html;
     }
+
+    public function saveServiciosTraining(Request $request) 
+    {        
+            DB::table('web_servicio')
+            ->where("id_servicio",$request->txt_values)
+            ->update([
+              'superior_titulo1' => $request->superior_titulo1,
+              'superior_titulo2' => $request->superior_titulo2,
+              'inferior_titulo' => $request->inferior_titulo,
+              'inferior_descripcion' => $request->inferior_descripcion,
+            ]); 
+            return back()->with('message','Se Actualizo');
+    }
+
+    
+public function imagenServiciosTraining(Request $request) 
+{        
+        $file = $request->file('image');
+
+        switch($request->txt_values) {
+          case 'superior': 
+            
+                if($file){
+                  $url_imagen =  DB::table('web_servicio')->where('id_servicio', '=', $request->txt_id_home)->get();
+                 
+                  if(file_exists(str_replace('/template_admin/', 'template_admin/',  $url_imagen[0]->superior_url_image))){
+                    unlink(str_replace('/template_admin/', 'template_admin/',  $url_imagen[0]->superior_url_image));
+                  }
+                  
+                    $filename  =  time() .'_'.$file->getClientOriginalName(); 
+                    $path = "template_admin/img";
+                    $file->move($path,$filename); 
+      
+                    DB::table('web_servicio')
+                      ->where("id_servicio",$request->txt_id_home)
+                      ->update([
+                      'superior_url_image' => '/template_admin/img/'.$filename, 
+                      ]); 
+    
+                  }
+                      $data=  DB::table('web_servicio')->where('id_servicio', '=', $request->txt_id_home)->get();
+                      $html='';
+                      $html.='
+                      <img class="card-img-top" src="'.$data[0]->superior_url_image.'" alt="Photo">
+                    ';
+                    return [$html,$request->txt_values];//SI ES SUPERIOR O INFERIOR
+
+                break;
+          case 'inferior': 
+            
+            if($file){
+              $url_imagen =  DB::table('web_servicio')->where('id_servicio', '=', $request->txt_id_home)->get();
+             
+              if(file_exists(str_replace('/template_admin/', 'template_admin/',  $url_imagen[0]->inferior_url_image))){
+                unlink(str_replace('/template_admin/', 'template_admin/',  $url_imagen[0]->inferior_url_image));
+              }
+              
+                $filename  =  time() .'_'.$file->getClientOriginalName(); 
+                $path = "template_admin/img";
+                $file->move($path,$filename); 
+  
+                DB::table('web_servicio')
+                  ->where("id_servicio",$request->txt_id_home)
+                  ->update([
+                  'inferior_url_image' => '/template_admin/img/'.$filename, 
+                  ]); 
+
+              }
+                  $data=  DB::table('web_servicio')->where('id_servicio', '=', $request->txt_id_home)->get();
+                  $html='';
+                  $html.='
+                  <img class="card-img-top" src="'.$data[0]->inferior_url_image.'" alt="Photo">
+                ';
+                  return [$html,$request->txt_values];//SI ES SUPERIOR O INFERIOR
+
+                  break;
+          
+      }
+}
+
+
+
 }
