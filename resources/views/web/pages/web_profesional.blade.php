@@ -35,7 +35,7 @@
         <div class="container" style="text-align: center">
             <div class="ttm-col-bgcolor-yes ttm-bg ttm-bgcolor-grey z-index-1">
                 <div class="ttm-col-wrapper-bg-layer ttm-bg-layer"></div>
-                <div class="layer-content">
+                <div class="layer-content" style="background: #535aa2;margin-bottom: 45px;">
                     <!-- testimonial-box -->
                     <div class="pt-45 pl-50 pb-50 pr-50 res-991-pl-15 res-991-pr-15 res-991-pt-30">
 
@@ -51,7 +51,7 @@
                         <div class="section-title">
                             <div class="title-header">
                                 <h5>CONTÁCTENOS</h5>
-                                <h2 class="title">Contacto profesional</h2>
+                                <h2 class="title" style="color: white;">Contacto profesional</h2>
                             </div>
                         </div><!-- section-title end -->
                         <form id="ttm-contactform-2" class="ttm-contactform-2 wrap-form clearfix"
@@ -86,7 +86,7 @@
                             </label>
                             <button
                                 class="submit ttm-btn ttm-btn-size-md ttm-btn-shape-rounded ttm-btn-style-fill ttm-btn-color-skincolor"
-                                type="submit">Enviar Mensaje</button>
+                                type="submit" style="background: #9796c9;">Enviar Mensaje</button>
                         </form>
                     </div>
                 </div>

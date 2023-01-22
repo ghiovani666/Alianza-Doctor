@@ -13,7 +13,7 @@
                                     src="template_web/assets/images/logo/logo_footer.png" alt="">
                             </div>
                             <div class="textwidget widget-text">
-                                <p class="pb-10 pr-30">{{ $data[0]->descripcion }}</p>
+                                <p class="pb-10 pr-30" style="line-height: 20px;color: rgb(255 255 255);font-size: 15px;text-align: justify;">{{ $data[0]->descripcion }}</p>
                                 <a class="ttm-btn ttm-btn-size-sm ttm-btn-shape-rounded ttm-btn-style-border ttm-btn-color-skincolor"
                                     href="#" title="">Leer Más!</a>
                             </div>
@@ -63,21 +63,19 @@
             <div class="container">
                 <div class="row copyright">
                     <div class="col-sm-9">
-                        <span>Copyright © 2022 Alianza del Dr Rath para la Salud Theme by <a
+                        <span>Copyright © 2023 Alianza del Dr Rath para la Salud Theme by <a
                                 href="http://www.alianzadrrath.org/">ThemetechMount</a></span>
                     </div>
                     <div class="col-sm-3">
                         <div class="d-flex flex-row align-items-center justify-content-end social-icons">
                             <ul class="social-icons list-inline">
-                                <li class="social-facebook"><a class="tooltip-top" target="_blank"
-                                        href="{{ $data[0]->red_social_facebook }}" data-tooltip="Facebook"><i
-                                            class="ti ti-facebook"></i></a></li>
                                 <li class="social-instagram"><a class="tooltip-top" target="_blank"
-                                        href="{{ $data[0]->red_social_instagram }}" data-tooltip="Google"><i
-                                            class="ti ti-google"></i></a></li>
-                                <li class="social-twitter"><a class="tooltip-top" target="_blank"
-                                        href="{{ $data[0]->red_social_tweter }}" data-tooltip="twitter"><i
-                                            class="ti ti-twitter-alt"></i></a></li>
+                                        href="{{ $data[0]->red_social_facebook }}" data-tooltip="instagram"><i
+                                            class="ti ti-instagram"></i></a></li>
+                               
+                                <li class="social-youtube"><a class="tooltip-top" target="_blank"
+                                        href="{{ $data[0]->red_social_tweter }}" data-tooltip="youtube"><i
+                                            class="ti ti-youtube"></i></a></li>
                             </ul>
                         </div>
                     </div>

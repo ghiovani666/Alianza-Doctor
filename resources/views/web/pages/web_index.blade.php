@@ -41,9 +41,9 @@
                     data-title="Slide" data-param1="" data-param2="" data-param3="" data-param4="" data-param5=""
                     data-param6="" data-param7="" data-param8="" data-param9="" data-param10="" data-description="">
 
-                    <!-- MAIN IMAGE -->
+                    <!-- MAIN IMAGE: data-bgfit="cover"-->
 
-                    <img src="{{ $slider[0]->url_image }}" alt="" data-bgposition="center center" data-bgfit="cover"
+                    <img src="{{ $slider[0]->url_image }}" alt="" data-bgposition="center center" data-bgfit="contain" 
                         data-bgrepeat="no-repeat" class="rev-slidebg" data-no-retina>
                     <!-- LAYER NR. 2 -->
                     <div class="tp-caption tp-resizeme" id="slide-6-layer-2" data-x="['left','left','left','left']"
@@ -67,7 +67,7 @@
                     data-param6="" data-param7="" data-param8="" data-param9="" data-param10="" data-description="">
 
                     <!-- MAIN IMAGE -->
-                    <img src="{{ $slider[1]->url_image }}" alt="" data-bgposition="center center" data-bgfit="cover"
+                    <img src="{{ $slider[1]->url_image }}" alt="" data-bgposition="center center" data-bgfit="contain" 
                         data-bgrepeat="no-repeat" class="rev-slidebg" data-no-retina>
 
                     <!-- LAYER NR. 1 -->
@@ -98,8 +98,8 @@
     <!--site-main start-->
     <div class="site-main">
 
-        <!--introduction-section-->
-        <section class="ttm-row introduction-section clearfix">
+        <!--introduction-section: ttm-row -->
+        <section class="introduction-section clearfix">
             <div class="container">
                 <div class="row no-gutters">
                     <div class="col-xl-6 col-lg-5 col-xs-12">
@@ -117,9 +117,10 @@
                                     <h2 class="title">{{$bienvenidos[0]->title1}}</h2>
                                 </div>
                                 <div class="title-desc">{{$bienvenidos[0]->descripcion}}</div>
-                            </div><!-- section title end -->
+                            </div> 
+                            
                             <div class="featuredbox-number">
-                                <!--featured-icon-box-->
+                              
                                 <div class="featured-icon-box icon-align-before-content style2">
                                     <div class="featured-icon">
                                         <div
@@ -137,8 +138,8 @@
                                             <p>{{$bienvenidos[1]->descripcion}}</p>
                                         </div>
                                     </div>
-                                </div><!-- featured-icon-box end-->
-                                <!--featured-icon-box-->
+                                </div> 
+                               
                                 <div class="featured-icon-box icon-align-before-content style2">
                                     <div class="featured-icon">
                                         <div
@@ -199,7 +200,7 @@
                         <!-- section-title -->
                         <div class="section-title with-sep title-style-center_text">
                             <div class="title-header">
-                                <h5 style="margin-top: 45px;font-size: 25px;">Nuestras Actividades</h5>
+                                <h5 style="margin-top: 45px;font-size: 25px;">Nuestras Publicaciones</h5>
                             </div><!-- section-title end -->
                         </div>
                     </div><!-- row end -->
@@ -214,17 +215,9 @@
                             <!-- featured-imagebox -->
                             <div class="featured-icon-box icon-align-top-content text-center style2 "
                                 style="padding: 2px 30px 60px !important;">
-                                <!-- <div class="featured-icon">
-                                    <div
-                                        class="ttm-icon ttm-icon_element-border ttm-icon_element-color-white ttm-icon_element-size-md ttm-icon_element-style-round">
-                                        <i class="flaticon-lab-1"></i>
-                                    </div>
-                                </div> -->
                                 <div class="featured-content">
                                     <div class="featured-title">
-                                        <h5><a
-                                                href="linkActividad/{{ $values->id_actividad }}">{{ $values->titulo }}</a>
-                                        </h5>
+                                        <h5><a href="linkActividad/{{ $values->id_actividad }}">{{ $values->titulo }}</a></h5>
                                     </div>
                                     <div class="featured-desc">
                                         <p>{{ $values->descripcion }}</p>
@@ -269,7 +262,7 @@
                                 <li class="tab active"><a href="#" data-filter="*">Todos</a></li>
                                 @if(count($nuestro_estudio_categoria)!=0)
                                 @foreach ($nuestro_estudio_categoria as $values)
-                                <li class="tab"><a href="#" data-filter="{{ $values->descripciones }}">{{ substr($values->nombre,1)  }}</a></li>
+                                <li class="tab"><a href="#" data-filter="{{ $values->descripciones }}">{{$values->nombre  }}</a></li>
                                 @endforeach
                                 @endif
                             </ul>
@@ -349,9 +342,9 @@
                 <!-- row -->
                 <div class="row">
                     <div class="col-lg-4 col-md-8 col-sm-8">
-                        <div class="ttm-col-bgcolor-yes ttm-bg ttm-bgcolor-skincolor z-index-2 spacing-5">
+                        <div class="ttm-col-bgcolor-yes ttm-bg ttm-bgcolor-skincolor z-index-2 spacing-5" style="margin-top: auto !important;">
                             <div class="ttm-col-wrapper-bg-layer ttm-bg-layer"></div>
-                            <div class="layer-content">
+                            <div class="layer-content"  >
 
                                 <?php $data = DB::table('web_footer as md')->where('md.id_footer',1)->get();?>
 
@@ -427,7 +420,7 @@
                     <div class="col-lg-8">
                         <div class="ttm-col-bgcolor-yes ttm-bg ttm-bgcolor-grey z-index-1">
                             <div class="ttm-col-wrapper-bg-layer ttm-bg-layer"></div>
-                            <div class="layer-content">
+                            <div class="layer-content" style="background: #535aa25c;">
                                 <!-- testimonial-box -->
                                 <div class="pt-45 pl-50 pb-50 pr-50 res-991-pl-15 res-991-pr-15 res-991-pt-30">
 
@@ -444,7 +437,7 @@
                                     <div class="section-title">
                                         <div class="title-header">
                                             <h5>CONTÁCTENOS</h5>
-                                            <h2 class="title">No dude en preguntar Envíe su mensaje.</h2>
+                                            <h2 class="title" style="color: #535aa2;">No dude en preguntar Envíe su mensaje.</h2>
                                         </div>
                                     </div><!-- section-title end -->
                                     <form id="ttm-contactform-2" class="ttm-contactform-2 wrap-form clearfix"
@@ -608,8 +601,33 @@
         </div>
     </div>
 
+    <style type="text/css">
+.featured-imagebox-portfolio.ttm-portfolio-box-view1 img {
+    object-fit: contain;
+    width: 100%;
+    height: 22rem;
+    transition: all 0.6s ease 0s;
+}
+ 
+        </style>
 
     @endsection
+
+    @push('scripts')
+    <script>
+    // $(document).ready(function() {
+    //             $('#rev_slider_5_1').revolution(
+    //             {
+    //                 delay:9000,
+    //                 startwidth:1170,
+    //                 startheight:500,
+    //                 hideThumbs:10
+    //             });
+    //     });
+    </script>
+    @endpush
+
+  
 
     @section('footer_page')
     <script>

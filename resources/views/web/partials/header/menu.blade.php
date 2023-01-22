@@ -13,7 +13,7 @@
                                         <a href="/" class="mega-menu-link">Inicio</a>
                                     </li>
                                     <li class="mega-menu-item ">
-                                        <a href="/web_quienes_somos" class="mega-menu-link">Quíenes Somos</a>
+                                        <a href="/web_quienes_somos" class="mega-menu-link">Quiénes Somos</a>
                                     </li>
                                     <li class="mega-menu-item ">
                                         <a href="/web_quehacemos" class="mega-menu-link">Qué hacemos</a>
@@ -32,15 +32,11 @@
                                     <ul class="social-icons">
                                         <li><a class="tooltip-bottom" target="_blank"
                                                 href="https://www.facebook.com/Fundaci%C3%B3n-Dr-Rath-para-la-Salud-378987682136616/"
-                                                data-tooltip="Facebook" tabindex="-1"><i class="fa fa-facebook"></i></a>
-                                        </li>
-                                        <li><a class="tooltip-bottom" target="_blank"
-                                                href="https://twitter.com/search?q=%40RathproSaludES&src=typd"
-                                                data-tooltip="Twitter" tabindex="-1"><i class="fa fa-twitter"></i></a>
+                                                data-tooltip="instagram" tabindex="-1"><i class="fa fa-instagram"></i></a>
                                         </li>
                                         <li><a class="tooltip-bottom" target="_blank"
                                                 href="https://www.youtube.com/channel/UCoi3i-rRidFBTc7JLjA5ung"
-                                                data-tooltip="Flickr" tabindex="-1"><i class="fa fa-google"></i></a>
+                                                data-tooltip="youtube" tabindex="-1"><i class="fa fa-youtube"></i></a>
                                         </li>
 
                                         <?php if (Auth::check()) { ?>

@@ -1,0 +1,4 @@
+public\template_web\assets\revolution\js\jquery.themepunch.revolution.min.js
+
+https://github.com/marsanla/SliderRevolution/blob/master/examples/11.Sample-Shuffle.html
+

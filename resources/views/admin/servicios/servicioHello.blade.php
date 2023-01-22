@@ -40,7 +40,7 @@
                     <div class="row" style="text-align: center;display: initial;">
                         <div class="form-group">
                             <label>Filtrar Tipo de Servicio</label>
-                            <select class="form-control" name="cb_servicio_filtro">
+                            <select class="form-control" name="txt_id_servicio_filtrar">
                                 <option value="0">------------All ---------------- </option>
                                 @foreach ($rowData_cb_ as $rows)
                                 <option value="{{ $rows->id_servicio }}">
@@ -98,7 +98,7 @@
                                         <div class="form-group editShowHide">
                                             <div class="form-group">
                                                 <label>Tipo de Servicio</label>
-                                                <select class="form-control" name="cb_servicio">
+                                                <select class="form-control" name="txt_id_servicio">
                                                     @foreach ($rowData_cb_ as $rows)
                                                     <option value="{{ $rows->id_servicio }}">
                                                         {{ $rows->superior_titulo1 }}
@@ -459,7 +459,7 @@ function FadeInAlert(text) {
 }
 
 // ::::::::::::::::::::::SELECCIONAR SERVICIO::::::::::::::::::::::::::::::::::::
-$('select[name=cb_servicio]').on('change click', function() {
+$('select[name=txt_id_servicio]').on('change click', function() {
     const id_servicio = this.value;
     handleSecundario(id_servicio)
 });
@@ -476,7 +476,7 @@ const handleSecundario = (id_servicio) => {
         })
 }
 
-$('select[name=cb_servicio_filtro]').on('change click', function() {
+$('select[name=txt_id_servicio_filtrar]').on('change click', function() {
     const id_servicio = this.value;
     listarDataTable(id_servicio)
 });
