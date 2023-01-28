@@ -5,57 +5,58 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
 
-    //::::::::::::::::::::::: WEB HOME ::::::::::::::::::::::::::
-    Route::get('/',                                     'Web\HomeController@index')->name('index');
-    Route::get('/web_login',                            'Web\HomeController@web_login')->name('web_login');
-    Route::get('/web_blog',                             'Web\HomeController@web_blog');
-    Route::get('/logout',                               'Auth\LoginController@logout');
-    Route::get('/web_contacto',                         'Web\HomeController@web_contacto');
-    Route::get('/linkActividad/{idActividad}',          'Web\HomeController@linkActividad');
+        //::::::::::::::::::::::: WEB HOME ::::::::::::::::::::::::::
+        Route::get('/',                                     'Web\HomeController@index')->name('index');
+        Route::get('/web_login',                            'Web\HomeController@web_login')->name('web_login');
+        Route::get('/web_blog',                             'Web\HomeController@web_blog');
+        Route::get('/logout',                               'Auth\LoginController@logout');
+        Route::get('/web_contacto',                         'Web\HomeController@web_contacto');
+        Route::get('/linkActividad/{idActividad}',          'Web\HomeController@linkActividad');
+        Route::post('/web_registe_user',                    'Auth\RegisterController@web_registe_user')->name('web_registe_user');
+        Route::get('/servicio_informacion/{id}',            'Web\HomeController@servicio_informacion');
 
-    //::::::::::::::::::::::: WEB HOME - EMAIL ::::::::::::::::::::::::::
-    Route::post('enviar_email_informacion', 'Web\HomeController@enviar_email_informacion');
+        //::::::::::::::::::::::: WEB HOME - EMAIL ::::::::::::::::::::::::::
+        Route::post('enviar_email_informacion', 'Web\HomeController@enviar_email_informacion');
 
-    //::::::::::::::::::::::: WEB QUINES SOMOS ::::::::::::::::::::::::::
-    Route::get('/web_quienes_somos',                'Web\QuienesSomosController@web_quienes_somos')->name('web_quienes_somos');
-    //::::::::::::::::::::::: WEB CONTROLLER QUE HACEMOS ::::::::::::::::::::::::::
-    Route::get('/web_quehacemos',                   'Web\QueHacemosController@web_quehacemos')->name('web_quehacemos');
-    //::::::::::::::::::::::: WEB CONTROLLER MEDICINA CELULAR ::::::::::::::::::::::::::
-    Route::get('/web_medicinacelular',              'Web\MedicinaCelularController@web_medicinacelular')->name('web_medicinacelular');
-    //::::::::::::::::::::::: WEB CONTROLLER LA ALIANZA ::::::::::::::::::::::::::
-    Route::get('/web_alianza',                      'Web\LaAlianzaController@web_alianza')->name('web_mathias_rath');
-    Route::get('/web_mathias_rath',                 'Web\LaAlianzaController@web_mathias_rath')->name('web_mathias_rath');
-    Route::get('/web_sustancias_vitales',           'Web\LaAlianzaController@web_sustancias_vitales')->name('web_sustancias_vitales');
-    Route::get('/web_productos_naturales',          'Web\LaAlianzaController@web_productos_naturales')->name('web_productos_naturales');
-    Route::get('/web_formacion',                    'Web\LaAlianzaController@web_formacion')->name('web_formacion');
-    Route::get('/web_grupo_barcelona',              'Web\LaAlianzaController@web_grupo_barcelona')->name('web_grupo_barcelona');
+        //::::::::::::::::::::::: WEB QUINES SOMOS ::::::::::::::::::::::::::
+        Route::get('/web_quienes_somos',                'Web\QuienesSomosController@web_quienes_somos')->name('web_quienes_somos');
+        //::::::::::::::::::::::: WEB CONTROLLER QUE HACEMOS ::::::::::::::::::::::::::
+        Route::get('/web_quehacemos',                   'Web\QueHacemosController@web_quehacemos')->name('web_quehacemos');
+        //::::::::::::::::::::::: WEB CONTROLLER MEDICINA CELULAR ::::::::::::::::::::::::::
+        Route::get('/web_medicinacelular',              'Web\MedicinaCelularController@web_medicinacelular')->name('web_medicinacelular');
+        //::::::::::::::::::::::: WEB CONTROLLER LA ALIANZA ::::::::::::::::::::::::::
+        Route::get('/web_alianza',                      'Web\LaAlianzaController@web_alianza')->name('web_mathias_rath');
+        Route::get('/web_mathias_rath',                 'Web\LaAlianzaController@web_mathias_rath')->name('web_mathias_rath');
+        Route::get('/web_sustancias_vitales',           'Web\LaAlianzaController@web_sustancias_vitales')->name('web_sustancias_vitales');
+        Route::get('/web_productos_naturales',          'Web\LaAlianzaController@web_productos_naturales')->name('web_productos_naturales');
+        Route::get('/web_formacion',                    'Web\LaAlianzaController@web_formacion')->name('web_formacion');
+        Route::get('/web_grupo_barcelona',              'Web\LaAlianzaController@web_grupo_barcelona')->name('web_grupo_barcelona');
 
-    //::::::::::::::::::::::: WEB CONTROLLER INVESTIGACION ::::::::::::::::::::::::::
-    Route::get('/web_investigacion',                'Web\InsInvestigacionController@web_investigacion')->name('web_investigacion');
-    //::::::::::::::::::::::: WEB CONTROLLER FUNDACION ::::::::::::::::::::::::::
-    Route::get('/web_fundacion',                    'Web\FundacionController@web_fundacion')->name('web_fundacion');
-    //::::::::::::::::::::::: WEB CONTROLLER PUBLICACION ::::::::::::::::::::::::::
-    Route::get('/web_publicacion_internacional',    'Web\PublicacionesController@web_publicacion_internacional')->name('web_publicacion_internacional');
-    Route::get('/web_saludnatural',                 'Web\PublicacionesController@web_saludnatural')->name('web_saludnatural');
-    Route::get('/web_informativos',                 'Web\PublicacionesController@web_informativos')->name('web_informativos');
-    Route::get('/web_revistas',                     'Web\PublicacionesController@web_revistas')->name('web_revistas');
-    Route::get('/web_productos_saludables',         'Web\PublicacionesController@web_productos_saludables')->name('web_productos_saludables');
-    Route::get('/web_investigaciones',              'Web\PublicacionesController@web_investigaciones')->name('web_investigaciones');
-    Route::get('/web_barletta',                     'Web\PublicacionesController@web_barletta')->name('web_barletta');
-    Route::get('/web_boletines',                    'Web\PublicacionesController@web_boletines')->name('web_boletines');
-    Route::get('/web_libros',                       'Web\PublicacionesController@web_libros')->name('web_libros');
+        //::::::::::::::::::::::: WEB CONTROLLER INVESTIGACION ::::::::::::::::::::::::::
+        Route::get('/web_investigacion',                'Web\InsInvestigacionController@web_investigacion')->name('web_investigacion');
+        //::::::::::::::::::::::: WEB CONTROLLER FUNDACION ::::::::::::::::::::::::::
+        Route::get('/web_fundacion',                    'Web\FundacionController@web_fundacion')->name('web_fundacion');
+        //::::::::::::::::::::::: WEB CONTROLLER PUBLICACION ::::::::::::::::::::::::::
+        Route::get('/web_publicacion_internacional',    'Web\PublicacionesController@web_publicacion_internacional')->name('web_publicacion_internacional');
+        Route::get('/web_saludnatural',                 'Web\PublicacionesController@web_saludnatural')->name('web_saludnatural');
+        Route::get('/web_informativos',                 'Web\PublicacionesController@web_informativos')->name('web_informativos');
+        Route::get('/web_revistas',                     'Web\PublicacionesController@web_revistas')->name('web_revistas');
+        Route::get('/web_productos_saludables',         'Web\PublicacionesController@web_productos_saludables')->name('web_productos_saludables');
+        Route::get('/web_investigaciones',              'Web\PublicacionesController@web_investigaciones')->name('web_investigaciones');
+        Route::get('/web_barletta',                     'Web\PublicacionesController@web_barletta')->name('web_barletta');
+        Route::get('/web_boletines',                    'Web\PublicacionesController@web_boletines')->name('web_boletines');
+        Route::get('/web_libros',                       'Web\PublicacionesController@web_libros')->name('web_libros');
 
-    //::::::::::::::::::::::: WEB CONTROLLER ACTIVIDAD ::::::::::::::::::::::::::
-    Route::get('/web_actividad',                    'Web\ActividadesController@web_actividad')->name('web_actividad');
-    Route::get('/web_curso_basico',                 'Web\ActividadesController@web_curso_basico')->name('web_curso_basico');
-    Route::get('/web_servicios_all/{id_servicio}',  'Web\ActividadesController@web_servicios_all')->name('web_servicios_all');
-    Route::get('/viewServicioInfo/{id}',            'Web\ActividadesController@viewServicioInfo')->name('viewServicioInfo');
+        //::::::::::::::::::::::: WEB CONTROLLER ACTIVIDAD ::::::::::::::::::::::::::
+        Route::get('/web_actividad',                    'Web\ActividadesController@web_actividad')->name('web_actividad');
+        Route::get('/web_curso_basico',                 'Web\ActividadesController@web_curso_basico')->name('web_curso_basico');
+        Route::get('/web_servicios_all/{id_servicio}',  'Web\ActividadesController@web_servicios_all')->name('web_servicios_all');
+        Route::get('/viewServicioInfo/{id}',            'Web\ActividadesController@viewServicioInfo')->name('viewServicioInfo');
 
+        //::::::::::::::::::::::: WEB CONTROLLER PROFESIONAL ::::::::::::::::::::::::::
+        Route::get('/web_profesional',                  'Web\ProfesionalesController@web_profesional')->name('web_profesional');
+        Auth::routes();
 
-    //::::::::::::::::::::::: WEB CONTROLLER PROFESIONAL ::::::::::::::::::::::::::
-    Route::get('/web_profesional',                  'Web\ProfesionalesController@web_profesional')->name('web_profesional');
-
-    Auth::routes();
     Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function() {
     
         //::::::::::::::::::::::: ADMIN CONTROLLER ADMIN ::::::::::::::::::::::::::
@@ -66,7 +67,6 @@ use Illuminate\Support\Facades\Session;
         Route::get('/admin_home_slider',                            'Admin\HomeController@admin_home_slider');
         Route::post('/admin_home_slider_edit',                      'Admin\HomeController@admin_home_slider_edit');
         Route::post('/admin_home_slider_update',                      'Admin\HomeController@admin_home_slider_update');
-
 
         Route::get('/admin_home_bienvenidos',                       'Admin\HomeController@admin_home_bienvenidos');
         Route::post('/admin_home_bienvenidos_update_text',          'Admin\HomeController@admin_home_bienvenidos_update_text');
@@ -88,6 +88,13 @@ use Illuminate\Support\Facades\Session;
         Route::post('/editServicioGaleria',          'Admin\HomeController@editServicioGaleria');
         Route::post('/editData_NuestroEstudio',      'Admin\HomeController@editData_NuestroEstudio');
 
+
+        //::::::::::::::::::::::: ADMIN CONTROLLER BLOG ::::::::::::::::::::::::::
+        Route::get('/admin_blog',                      'Admin\BlogController@admin_blog');
+        Route::get('/admin_blog_listar',               'Admin\BlogController@admin_blog_listar');
+        Route::post('/admin_blog_crear',               'Admin\BlogController@admin_blog_crear');
+        Route::post('/admin_blog_editar',              'Admin\BlogController@admin_blog_editar');
+        
 
         //::::::::::::::::::::::: ADMIN CONTROLLER QUIENES SOMOS ::::::::::::::::::::::::::
         Route::get('/admin_quienes_somos',             'Admin\QuienesSomosController@admin_quienes_somos');
@@ -161,29 +168,15 @@ use Illuminate\Support\Facades\Session;
         Route::post('/admin_profesional_update',                'Admin\ProfesionalesController@admin_profesional_update');
 
 
+        //::::::::::::::::::::::: WEB CONTROLLER ACTIVIDAD ::::::::::::::::::::::::::
+        Route::get('/admin_actividad',                          'Admin\ActividadesController@admin_actividad');//Inanctivo
+        Route::post('/admin_actividad_update',                  'Admin\ActividadesController@admin_actividad_update');//Inanctivo
 
-                //::::::::::::::::::::::: WEB CONTROLLER ACTIVIDAD ::::::::::::::::::::::::::
-                Route::get('/admin_actividad',                          'Admin\ActividadesController@admin_actividad');//Inanctivo
-                Route::post('/admin_actividad_update',                  'Admin\ActividadesController@admin_actividad_update');//Inanctivo
+        Route::get('/admin_curso_basico',                          'Admin\ActividadesController@admin_curso_basico');
+        Route::post('/admin_curso_basico_update',                  'Admin\ActividadesController@admin_curso_basico_update');
         
-                Route::get('/admin_curso_basico',                          'Admin\ActividadesController@admin_curso_basico');
-                Route::post('/admin_curso_basico_update',                  'Admin\ActividadesController@admin_curso_basico_update');
-
-
-                
-                Route::post('/admin_servicio_update',     'Admin\ServicioController@admin_servicio_update');
-                Route::get('/listarDataTableInfo',          'Admin\ServicioController@listarDataTableInfo');
-
-
-
-
-
-
-
-
-
-
-
+        Route::post('/admin_servicio_update',     'Admin\ServicioController@admin_servicio_update');
+        Route::get('/listarDataTableInfo',          'Admin\ServicioController@listarDataTableInfo');
 
         //::::::::::::::::::::::: CONTROLLER SERVICIO ::::::::::::::::::::::::::
         Route::post('/changeServicioTraining',  'Admin\ServicioController@changeServicioTraining');
@@ -202,13 +195,10 @@ use Illuminate\Support\Facades\Session;
         Route::post('/servicioGrabarTitulo','Admin\ServicioController@servicioGrabarTitulo');
         Route::post('/servicioEditarTitulo','Admin\ServicioController@servicioEditarTitulo');
 
-
-
-
-
-
-
-                
+        //::::::::::::::::::::::: CONTROLLER TERMINOS CONDICIONES ::::::::::::::::::::::::::
+        Route::get('/terminos/{id}',                        'Admin\TerminosController@index');
+        Route::post('/terminos_guardar',                    'Admin\TerminosController@terminos_guardar');
+        Route::post('/general_imagen_terminos',             'Admin\TerminosController@general_imagen_terminos');
 
     });
 

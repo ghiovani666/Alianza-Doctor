@@ -9,6 +9,15 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
+use Storage;
+use Image;
+use Illuminate\Contracts\Filesystem\Filesystem;
+use File;
+
+
 class RegisterController extends Controller
 {
     /*
@@ -23,30 +32,13 @@ class RegisterController extends Controller
     */
 
     use RegistersUsers;
-
-    /**
-     * Where to redirect users after registration.
-     *
-     * @var string
-     */
     protected $redirectTo = RouteServiceProvider::HOME;
-
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
+ 
     public function __construct()
     {
         $this->middleware('guest');
     }
 
-    /**
-     * Get a validator for an incoming registration request.
-     *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
     protected function validator(array $data)
     {
         return Validator::make($data, [
@@ -56,12 +48,7 @@ class RegisterController extends Controller
         ]);
     }
 
-    /**
-     * Create a new user instance after a valid registration.
-     *
-     * @param  array  $data
-     * @return \App\User
-     */
+    
     protected function create(array $data)
     {
         return User::create([
@@ -70,4 +57,36 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
     }
+
+    protected function web_registe_user(Request $request)
+    {
+        DB::beginTransaction();
+
+        try {
+
+            $user =  User::create([
+            'name'                        => $request->txt_nombre,//Nombre
+            'email'                       => $request->txt_email,
+            'password'                    => Hash::make($request->txt_password),
+            'password_new'                => $request->txt_password,
+            'telefono_movil'              => $request->txt_telefono_movil,
+
+            'admin'                       => 2,
+            'tipo_user'                   => 2,
+            'terminos'                    => $request->txt_terminos_condiciciones,
+
+        ]);
+
+        Auth::login($user);
+
+        DB::commit();
+        // all good
+        return json_encode(['data' => 'Procesado el registro correctamente!','state' => 'ok']);
+        } catch (\Exception $e) {
+            DB::rollback();
+            return json_encode(['data' =>$e->getMessage(),'state' => 'error']);
+        }
+
+    }
+
 }

@@ -7,6 +7,17 @@
           <span class="brand-text font-weight-light">Dashboard</span>
       </a>
 
+      <?php 
+                  
+        function siteURL() {
+        $protocol = ((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off') || 
+            $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
+        $domainName = $_SERVER['HTTP_HOST'];
+        return $protocol.$domainName;
+        }
+            
+    ?>
+
       <!-- Sidebar -->
       <div class="sidebar">
           <!-- Sidebar user panel (optional) -->
@@ -30,31 +41,31 @@
                       </a>
                       <ul class="nav nav-treeview">
                           <li class="nav-item">
-                              <a href="admin_home_slider" class="nav-link">
+                              <a href="<?php echo siteURL().'/admin/admin_home_slider'; ?>" class="nav-link">
                                   <i class="far fa-circle nav-icon"></i>
                                   <p>Slider & Footer</p>
                               </a>
                           </li>
                           <li class="nav-item">
-                              <a href="admin_home_bienvenidos" class="nav-link">
+                              <a href="<?php echo siteURL().'/admin/admin_home_bienvenidos'; ?>" class="nav-link">
                                   <i class="far fa-circle nav-icon"></i>
                                   <p>Bienvenidos</p>
                               </a>
                           </li>
                           <li class="nav-item">
-                              <a href="admin_nuestra_actividad" class="nav-link">
+                              <a href="<?php echo siteURL().'/admin/admin_nuestra_actividad'; ?>" class="nav-link">
                                   <i class="far fa-circle nav-icon"></i>
                                   <p>Nuestras Actividades</p>
                               </a>
                           </li>
                           <li class="nav-item">
-                              <a href="admin_nuestro_estudio" class="nav-link">
+                              <a href="<?php echo siteURL().'/admin/admin_nuestro_estudio'; ?>" class="nav-link">
                                   <i class="far fa-circle nav-icon"></i>
                                   <p>Nuestros Estudios</p>
                               </a>
                           </li>
                           <li class="nav-item">
-                              <a href="admin_ventajas" class="nav-link">
+                              <a href="<?php echo siteURL().'/admin/admin_ventajas'; ?>" class="nav-link">
                                   <i class="far fa-circle nav-icon"></i>
                                   <p>Ventajas</p>
                               </a>
@@ -63,20 +74,27 @@
                   </li>
 
                   <li class="nav-item">
-                      <a href="admin_quienes_somos" class="nav-link">
+                      <a href="<?php echo siteURL().'/admin/admin_quienes_somos'; ?>" class="nav-link">
                           <i class="nav-icon fas fa-copy"></i>
                           <p> Quienes Somos<i class="fas fa-podcast right"></i> </p>
                       </a>
                   </li>
                   <li class="nav-item">
-                      <a href="admin_quehacemos" class="nav-link">
+                      <a href="<?php echo siteURL().'/admin/admin_blog'; ?>" class="nav-link">
+                          <i class="nav-icon fas fa-copy"></i>
+                          <p> Blog<i class="fas fa-podcast right"></i> </p>
+                      </a>
+                  </li>
+
+                  <li class="nav-item">
+                      <a href="<?php echo siteURL().'/admin/admin_quehacemos'; ?>" class="nav-link">
                           <i class="nav-icon fas fa-copy"></i>
                           <p> Que Hacemos<i class="fas fa-podcast right"></i> </p>
                       </a>
                   </li>
 
                   <li class="nav-item">
-                      <a href="admin_medicinacelular" class="nav-link">
+                      <a href="<?php echo siteURL().'/admin/admin_medicinacelular'; ?>" class="nav-link">
                           <i class="nav-icon fas fa-copy"></i>
                           <p> Medicina Celular<i class="fas fa-podcast right"></i> </p>
                       </a>
@@ -92,38 +110,38 @@
                       </a>
                       <ul class="nav nav-treeview">
                           <li class="nav-item">
-                              <a href="admin_alianza" class="nav-link">
+                              <a href="<?php echo siteURL().'/admin/admin_alianza'; ?>" class="nav-link">
                                   <i class="far fa-circle nav-icon"></i>
                                   <p>La Alianza</p>
                               </a>
                           </li>
                           <li class="nav-item">
-                              <a href="admin_mathias_rath" class="nav-link">
+                              <a href="<?php echo siteURL().'/admin/admin_mathias_rath'; ?>" class="nav-link">
                                   <i class="far fa-circle nav-icon"></i>
                                   <p>Dr. Mathias Rath</p>
                               </a>
                           </li>
                           <li class="nav-item">
-                              <a href="admin_sustancias_vitales" class="nav-link">
+                              <a href="<?php echo siteURL().'/admin/admin_sustancias_vitales'; ?>" class="nav-link">
                                   <i class="far fa-circle nav-icon"></i>
                                   <p>Sustancias Vitales</p>
                               </a>
                           </li>
 
                           <li class="nav-item">
-                              <a href="admin_productos_naturales" class="nav-link">
+                              <a href="<?php echo siteURL().'/admin/admin_productos_naturales'; ?>" class="nav-link">
                                   <i class="far fa-circle nav-icon"></i>
                                   <p>Productos Naturales</p>
                               </a>
                           </li>
                           <li class="nav-item">
-                              <a href="admin_formacion" class="nav-link">
+                              <a href="<?php echo siteURL().'/admin/admin_formacion'; ?>" class="nav-link">
                                   <i class="far fa-circle nav-icon"></i>
                                   <p>Formación</p>
                               </a>
                           </li>
                           <li class="nav-item">
-                              <a href="admin_grupo_barcelona" class="nav-link">
+                              <a href="<?php echo siteURL().'/admin/admin_grupo_barcelona'; ?>" class="nav-link">
                                   <i class="far fa-circle nav-icon"></i>
                                   <p>Barcelona</p>
                               </a>
@@ -131,14 +149,14 @@
                       </ul>
                   </li>
                   <li class="nav-item">
-                      <a href="admin_investigacion" class="nav-link">
+                      <a href="<?php echo siteURL().'/admin/admin_investigacion'; ?>" class="nav-link">
                           <i class="nav-icon fas fa-copy"></i>
                           <p> Inst. de Investigación<i class="fas fa-podcast right"></i> </p>
                       </a>
                   </li>
 
                   <li class="nav-item">
-                      <a href="admin_fundacion" class="nav-link">
+                      <a href="<?php echo siteURL().'/admin/admin_fundacion'; ?>" class="nav-link">
                           <i class="nav-icon fas fa-copy"></i>
                           <p> Fundación<i class="fas fa-podcast right"></i> </p>
                       </a>
@@ -154,64 +172,56 @@
                       </a>
                       <ul class="nav nav-treeview">
                           <li class="nav-item">
-                              <a href="admin_publicacion_internacional" class="nav-link">
-                                  <i class="far fa-circle nav-icon"></i>
+                              <a href="<?php echo siteURL().'/admin/admin_publicacion_internacional'; ?>" class="nav-link">
+                                  <i class="nav-icon far fa-circle text-warning"></i>
                                   <p>Dr. Rath Internacional</p>
                               </a>
                           </li>
                           <li class="nav-item">
-                              <a href="admin_saludnatural" class="nav-link">
-                                  <i class="far fa-circle nav-icon"></i>
+                              <a href="<?php echo siteURL().'/admin/admin_saludnatural'; ?>" class="nav-link">
+                                  <i class="nav-icon far fa-circle text-warning"></i>
                                   <p>Folletos - Salud Natural</p>
                               </a>
                           </li>
                           <li class="nav-item">
-                              <a href="admin_informativos" class="nav-link">
-                                  <i class="far fa-circle nav-icon"></i>
+                              <a href="<?php echo siteURL().'/admin/admin_informativos'; ?>" class="nav-link">
+                                  <i class="nav-icon far fa-circle text-warning"></i>
                                   <p>Boletines Informativos</p>
                               </a>
                           </li>
                           <li class="nav-item">
-                              <a href="admin_revistas" class="nav-link">
-                                  <i class="far fa-circle nav-icon"></i>
+                              <a href="<?php echo siteURL().'/admin/admin_revistas'; ?>" class="nav-link">
+                                  <i class="nav-icon far fa-circle text-warning"></i>
                                   <p>Revistas</p>
                               </a>
                           </li>
                           <li class="nav-item">
-                              <a href="admin_productos_saludables" class="nav-link">
-                                  <i class="far fa-circle nav-icon"></i>
+                              <a href="<?php echo siteURL().'/admin/admin_productos_saludables'; ?>" class="nav-link">
+                                  <i class="nav-icon far fa-circle text-warning"></i>
                                   <p>Productos Saludables</p>
                               </a>
                           </li>
                           <li class="nav-item">
-                              <a href="admin_investigaciones" class="nav-link">
-                                  <i class="far fa-circle nav-icon"></i>
+                              <a href="<?php echo siteURL().'/admin/admin_investigaciones'; ?>" class="nav-link">
+                                  <i class="nav-icon far fa-circle text-warning"></i>
                                   <p>Investigaciones</p>
+                              </a>
+                          </li>
+                          <li class="nav-item">
+                              <a href="<?php echo siteURL().'/admin/admin_libros'; ?>" class="nav-link">
+                                  <i class="nav-icon far fa-circle text-warning"></i>
+                                  <p>Libros</p>
                               </a>
                           </li>
 
                           <li class="nav-item">
-                              <a href="admin_barletta" class="nav-link">
-                                  <i class="far fa-circle nav-icon"></i>
+                              <a href="<?php echo siteURL().'/admin/admin_barletta'; ?>" class="nav-link">
+                                  <i class="nav-icon far fa-circle text-warning"></i>
                                   <p>Declaración Barletta</p>
                               </a>
                           </li>
-                          <!-- <li class="nav-item">
-                              <a href="admin_boletines" class="nav-link">
-                                  <i class="far fa-circle nav-icon"></i>
-                                  <p>Boletines</p>
-                              </a>
-                          </li> -->
                       </ul>
                   </li>
-
-                  <!-- <li class="nav-item">
-                      <a href="admin_actividad" class="nav-link">
-                          <i class="nav-icon fas fa-copy"></i>
-                          <p> Actividades<i class="fas fa-podcast right"></i> </p>
-                      </a>
-                  </li> -->
-
 
                   <li class="nav-item">
                       <a href="#" class="nav-link">
@@ -223,13 +233,13 @@
                       </a>
                       <ul class="nav nav-treeview">
                           <li class="nav-item">
-                              <a href="admin_curso_basico" class="nav-link">
+                              <a href="<?php echo siteURL().'/admin/admin_curso_basico'; ?>" class="nav-link">
                                   <i class="far fa-circle nav-icon"></i>
                                   <p>Curso básico online</p>
                               </a>
                           </li>
                           <li class="nav-item">
-                              <a href="adminServicioHello" class="nav-link">
+                              <a href="<?php echo siteURL().'/admin/adminServicioHello'; ?>" class="nav-link">
                                   <i class="far fa-circle nav-icon"></i>
                                   <p>Charlas,Cursos y Talleres</p>
                               </a>
@@ -237,13 +247,56 @@
                       </ul>
                   </li>
 
-
-
                   <li class="nav-item">
-                      <a href="admin_profesional" class="nav-link">
+                      <a href="<?php echo siteURL().'/admin/admin_profesional'; ?>" class="nav-link">
                           <i class="nav-icon fas fa-copy"></i>
                           <p> Profesionales<i class="fas fa-podcast right"></i> </p>
                       </a>
+                  </li>
+
+                  <li class="nav-item">
+                      <a href="#" class="nav-link">
+                          <i class="nav-icon fas fa-table"></i>
+                          <p> Políticas<i class="fas fa-angle-left right"></i> </p>
+                      </a>
+                      <ul class="nav nav-treeview">
+                          <li class="nav-item">
+                              <a href="{{ url('admin/terminos' , [ 'id' => 1]) }}" class="nav-link">
+                                  <i class="nav-icon far fa-circle text-danger"></i>
+                                  <p>Aviso Legal</p>
+                              </a>
+                          </li>
+                          <li class="nav-item">
+                              <a href="{{ url('admin/terminos' , [ 'id' => 2]) }}" class="nav-link">
+                                  <i class="nav-icon far fa-circle text-danger"></i>
+                                  <p>Políticas de Privacidad</p>
+                              </a>
+                          </li>
+                          <li class="nav-item">
+                              <a href="{{ url('admin/terminos' , [ 'id' => 3]) }}" class="nav-link">
+                                  <i class="nav-icon far fa-circle text-danger"></i>
+                                  <p>Políticas de Cookies</p>
+                              </a>
+                          </li>
+                          <li class="nav-item">
+                              <a href="{{ url('admin/terminos' , [ 'id' => 4]) }}" class="nav-link">
+                                  <i class="nav-icon far fa-circle text-danger"></i>
+                                  <p>Condiciones Generales</p>
+                              </a>
+                          </li>
+                          <!-- <li class="nav-item">
+                              <a href="{{ url('admin/terminos' , [ 'id' => 5]) }}" class="nav-link">
+                                  <i class="nav-icon far fa-circle text-danger"></i>
+                                  <p>Devoluciones</p>
+                              </a>
+                          </li> -->
+                          <li class="nav-item" style="margin-bottom: 145px;">
+                              <a href="{{ url('admin/terminos' , [ 'id' => 6]) }}" class="nav-link">
+                                  <i class="nav-icon far fa-circle text-danger"></i>
+                                  <p>Terminos y Condiciones</p>
+                              </a>
+                          </li>
+                      </ul>
                   </li>
               </ul>
           </nav>
@@ -255,14 +308,20 @@
                   <li class="nav-item">
                       <a href="#" class="nav-link">
                           <i class="nav-icon fas fa-copy"></i>
-                          <p> Home<i class="fas fa-angle-left right"></i> </p>
+                          <p> Recursos<i class="fas fa-angle-left right"></i> </p>
                       </a>
                       <ul class="nav nav-treeview">
                           <li class="nav-item">
-                              <a href="#" class="nav-link">
-                                  <i class="far fa-circle nav-icon"></i>
-                                  <p>Reservas</p>
-                              </a>
+                              <a href="#" class="nav-link"> <i class="far fa-circle nav-icon"></i><p>Reservas</p></a>
+                          </li>
+                          <li class="nav-item">
+                              <a href="#" class="nav-link"> <i class="far fa-circle nav-icon"></i><p>Favoritos</p></a>
+                          </li>
+                          <li class="nav-item">
+                              <a href="#" class="nav-link"> <i class="far fa-circle nav-icon"></i><p>Libros</p></a>
+                          </li>
+                          <li class="nav-item">
+                              <a href="#" class="nav-link"> <i class="far fa-circle nav-icon"></i><p>Cursos</p></a>
                           </li>
                       </ul>
                   </li>

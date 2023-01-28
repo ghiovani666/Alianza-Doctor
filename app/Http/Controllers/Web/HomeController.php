@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use Session;
 //ENVIAR CORREOS
 use Mail;
@@ -25,8 +26,13 @@ class HomeController extends Controller
     }
 
     public function linkActividad(Request $request){
+
         $data_ = DB::table('web_nuestra_actividad')->where('id_actividad', $request->idActividad)->get();
-    	return view('web.pages.linkActividad')->with(compact('data_'));
+        if(Auth::check())
+            return view('web.pages.linkActividad')->with(compact('data_'));
+        else
+             return json_encode(['data' =>  'Usted no tiene una cuenta, registrese','state' => 'login']);
+
     }
 
      public function web_login(){
@@ -53,6 +59,12 @@ class HomeController extends Controller
 
     public function web_contacto(){
     	return view('web.pages.web_contacto');
+    }
+
+
+    public function servicio_informacion($id) {
+        $Products =  DB::table('web_terminos')->where("id_terminos", $id)->get(); 
+        return view('web.pages.web_servicio_informacion', compact('Products'));
     }
 
 }

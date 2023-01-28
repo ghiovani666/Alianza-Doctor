@@ -34,7 +34,14 @@
     </div>
 </section>
 <!--team-section end-->
-
+<style >
+    table.table-bordered >tbody>tr>td img{
+        width: 290rem !important;
+    }
+    /* li:nth-child(2) {
+  background: lightgreen;
+} */
+</style>
 @endsection
 
 @section('footer_page')

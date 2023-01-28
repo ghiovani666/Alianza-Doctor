@@ -48,7 +48,22 @@ tpj(document).ready(function() {
               h_offset:20,
               v_offset:0
             }
-          }
+          },
+
+          bullets: {
+            enable: true,
+            hide_onmobile: false,
+            style: "hesperiden",
+            hide_onleave: false,
+            direction: "horizontal",
+            h_align: "center",
+            v_align: "bottom",
+            h_offset: 20,
+            v_offset: 2,
+            space: 5,
+            tmp: ''
+        }
+
         },
          viewPort: {
             enable:true,

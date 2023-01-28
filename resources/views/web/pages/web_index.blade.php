@@ -17,7 +17,7 @@
 
 
 <!--page start-->
-<div class="page">
+<div class="page" style="z-index: unset;">
 
     <!-- preloader start -->
     <div id="preloader">
@@ -37,13 +37,13 @@
             <ul>
                 <!-- SLIDE  1-->
                 <li data-index="rs-6" data-transition="slotzoom-horizontal" data-slotamount="1" data-easein="default"
-                    data-easeout="default" data-masterspeed="1500" data-rotate="0" data-saveperformance="off"
+                    data-easeout="default" data-masterspeed="15" data-rotate="0" data-saveperformance="off"
                     data-title="Slide" data-param1="" data-param2="" data-param3="" data-param4="" data-param5=""
                     data-param6="" data-param7="" data-param8="" data-param9="" data-param10="" data-description="">
 
                     <!-- MAIN IMAGE: data-bgfit="cover"-->
 
-                    <img src="{{ $slider[0]->url_image }}" alt="" data-bgposition="center center" data-bgfit="contain" 
+                    <img src="{{ $slider[0]->url_image }}" alt="" data-bgposition="center center" data-bgfit="cover" 
                         data-bgrepeat="no-repeat" class="rev-slidebg" data-no-retina>
                     <!-- LAYER NR. 2 -->
                     <div class="tp-caption tp-resizeme" id="slide-6-layer-2" data-x="['left','left','left','left']"
@@ -62,12 +62,12 @@
 
                 <!-- SLIDE  2-->
                 <li data-index="rs-7" data-transition="slotzoom-horizontal" data-slotamount="1" data-easein="default"
-                    data-easeout="default" data-masterspeed="1500" data-rotate="0" data-saveperformance="off"
+                    data-easeout="default" data-masterspeed="15" data-rotate="0" data-saveperformance="off"
                     data-title="Slide" data-param1="" data-param2="" data-param3="" data-param4="" data-param5=""
                     data-param6="" data-param7="" data-param8="" data-param9="" data-param10="" data-description="">
 
                     <!-- MAIN IMAGE -->
-                    <img src="{{ $slider[1]->url_image }}" alt="" data-bgposition="center center" data-bgfit="contain" 
+                    <img src="{{ $slider[1]->url_image }}" alt="" data-bgposition="center center" data-bgfit="cover" 
                         data-bgrepeat="no-repeat" class="rev-slidebg" data-no-retina>
 
                     <!-- LAYER NR. 1 -->
@@ -91,16 +91,25 @@
             </ul>
             <div class="tp-bannertimer tp-bottom" style="visibility: hidden !important;"></div>
         </div>
-    </div>
-    <!-- END REVOLUTION SLIDER -->
 
+
+    </div>
+
+    
+    <!-- END REVOLUTION SLIDER -->
 
     <!--site-main start-->
     <div class="site-main">
 
-        <!--introduction-section: ttm-row -->
         <section class="introduction-section clearfix">
-            <div class="container">
+            <div class="container" style="margin-top: 45px;">
+                <div class="hs-responsive-embed-youtube"><iframe src="https://www.youtube.com/embed/jIGWVxNs-os?rel=0&amp;showinfo=0" height="515" frameborder="0" allowfullscreen=""></iframe></div>
+            </div>
+        </section>
+
+        <!--BIENVENIDOS -->
+        <section class="introduction-section clearfix">
+            <div class="container" style="margin-top: 45px;">
                 <div class="row no-gutters">
                     <div class="col-xl-6 col-lg-5 col-xs-12">
                         <!-- ttm_single_image-wrapper -->
@@ -276,18 +285,18 @@
                                             <div class="featured-imagebox featured-imagebox-portfolio ttm-portfolio-box-view1">
                                                 <div class="ttm-box-view-overlay ttm-portfolio-box-view-overlay">
                                                     <div class="featured-thumbnail">
-                                                        <a href="linkActividad/{{ $values->id_estudio }}"> <img class="img-fluid" src="{{ $values->url_image }}" alt="image"></a>
+                                                        <a href="javascript:void(0)" onClick="webRedireccionA({{ $values->id_estudio }})"> <img class="img-fluid" src="{{ $values->url_image }}" alt="image"></a>
                                                     </div>
                                                     <div class="featured-iconbox ttm-media-link">
                                                         <a class="ttm_prettyphoto ttm_image" title="Rehabilitation Center"  data-rel="prettyPhoto" href="{{ $values->url_image }}">
                                                             <i class="fa fa-expand"></i>
                                                         </a>
-                                                        <a href="linkActividad/{{ $values->id_estudio }}" class="ttm_link"><i class="ti ti-link"></i></a>
+                                                        <a href="javascript:void(0)" onClick="webRedireccionA({{ $values->id_estudio }})" class="ttm_link"><i class="ti ti-link"></i></a>
                                                     </div>
                                                     <div class="ttm-box-view-content-inner">
                                                         <div class="featured-content featured-content-portfolio">
                                                             <div class="featured-title">
-                                                                <h5><a href="linkActividad/{{ $values->id_estudio }}">{{ $values->titulo }}</a></h5>
+                                                                <h5><a href="javascript:void(0)" onClick="webRedireccionA({{ $values->id_estudio }})">{{ $values->titulo }}</a></h5>
                                                             </div>
                                                             <span class="category">{{ $values->descripcion }}</span>
                                                         </div>
@@ -602,12 +611,23 @@
     </div>
 
     <style type="text/css">
-.featured-imagebox-portfolio.ttm-portfolio-box-view1 img {
-    object-fit: contain;
-    width: 100%;
-    height: 22rem;
-    transition: all 0.6s ease 0s;
-}
+        .featured-imagebox-portfolio.ttm-portfolio-box-view1 img {
+            object-fit: contain;
+            width: 100%;
+            height: 22rem;
+            transition: all 0.6s ease 0s;
+        }
+
+        .hs-responsive-embed-youtube {
+        position: relative;
+        padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+        padding-top: 25px;
+        }
+        .hs-responsive-embed-youtube iframe {
+        position: absolute;
+        width: 100%!important;
+        height: 100%!important;
+        }
  
         </style>
 
@@ -615,15 +635,24 @@
 
     @push('scripts')
     <script>
-    // $(document).ready(function() {
-    //             $('#rev_slider_5_1').revolution(
-    //             {
-    //                 delay:9000,
-    //                 startwidth:1170,
-    //                 startheight:500,
-    //                 hideThumbs:10
-    //             });
-    //     });
+        // :::::::::::::::::::::::::::::: REGISTRAR LOGIN  ::::::::::::::::::::::::::::::::::::::::
+        function webRedireccionA(id_estudio) {
+            axios.get('linkActividad/'+id_estudio).then(function(response) {
+            if (response.data.state == "error") {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: response.data.data,
+                })
+            } else if (response.data.state == "login") {
+                $('#modalRegistrarFavorito').modal('show')
+            } else {
+                    window.location ='linkActividad/'+id_estudio
+            }
+                }).catch(function() {
+            console.log('FAILURE!!');
+            });
+        }
     </script>
     @endpush
 

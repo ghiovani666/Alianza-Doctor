@@ -31,7 +31,8 @@
     <script src="{{ URL::asset('template_web/assets/revolution/js/extensions/revolution.extension.video.min.js') }}"></script>
 
 
-
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 
 

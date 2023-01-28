@@ -4,7 +4,7 @@
         <div class="third-footer" style="background: #535aa2;color: white;">
             <div class="container">
                 <div class="row">
-                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 widget-area">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-3 widget-area">
                         <div class="widget widget_text clearfix">
 
                             <?php $data = DB::table('web_footer as md')->where('md.id_footer',1)->get();?>
@@ -19,18 +19,15 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 widget-area">
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-5 widget-area">
                         <div class="widget widget_nav_menu clearfix">
-                            <h3 class="widget-title" style="color: #ffffff;">Nuestro enlaces</h3>
+                            <h3 class="widget-title" style="color: #ffffff;">Información</h3>
                             <ul id="menu-footer-quick-links" style="color: #ffffff;">
-                                <li><a href="#" style="color: #ffffff;">Inicio</a></li>
-                                <li><a href="#" style="color: #ffffff;">Quienes Somos</a></li>
-                                <li><a href="#" style="color: #ffffff;">Información</a></li>
-                                <li><a href="#" style="color: #ffffff;">Blog</a></li>
-                                <li><a href="#" style="color: #ffffff;">Contacto</a></li>
-                                <li><a href="#" style="color: #ffffff;">Medicina Celular</a></li>
-                                <li><a href="#" style="color: #ffffff;">Calendario</a></li>
-                                <li><a href="#" style="color: #ffffff;">Contacto</a></li>
+                                <li><a href="/servicio_informacion/1" style="color: #ffffff;">Aviso Legal</a></li>
+                                <li><a href="/servicio_informacion/2" style="color: #ffffff;">Políticas de Privacidad</a></li>
+                                <li><a href="/servicio_informacion/3" style="color: #ffffff;">Políticas de Cookies</a></li>
+                                <li><a href="/servicio_informacion/4" style="color: #ffffff;">Condiciones Generales</a></li>
+                                <li><a href="/servicio_informacion/6" style="color: #ffffff;">Terminos y Condiciones</a></li>
                             </ul>
                         </div>
                     </div>
@@ -63,18 +60,17 @@
             <div class="container">
                 <div class="row copyright">
                     <div class="col-sm-9">
-                        <span>Copyright © 2023 Alianza del Dr Rath para la Salud Theme by <a
-                                href="http://www.alianzadrrath.org/">ThemetechMount</a></span>
+                        <span>Copyright © <?php echo date("Y"); ?> Alianza del Dr Rath para la Salud. <a href="http://www.alianzadrrath.org/">www.alianzadrrath.org</a></span>
                     </div>
                     <div class="col-sm-3">
                         <div class="d-flex flex-row align-items-center justify-content-end social-icons">
                             <ul class="social-icons list-inline">
                                 <li class="social-instagram"><a class="tooltip-top" target="_blank"
-                                        href="{{ $data[0]->red_social_facebook }}" data-tooltip="instagram"><i
+                                        href="{{ $data[0]->red_social_instagram }}" data-tooltip="instagram"><i
                                             class="ti ti-instagram"></i></a></li>
                                
                                 <li class="social-youtube"><a class="tooltip-top" target="_blank"
-                                        href="{{ $data[0]->red_social_tweter }}" data-tooltip="youtube"><i
+                                        href="{{ $data[0]->red_social_youtobe }}" data-tooltip="youtube"><i
                                             class="ti ti-youtube"></i></a></li>
                             </ul>
                         </div>

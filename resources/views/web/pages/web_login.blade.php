@@ -20,10 +20,13 @@
 </section>
 
 <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
-<div class="container">
-    <div class="forms">
+<div class="container login_responsives">
+    <div class="forms" style="margin-top: 25px;">
         <div class="form login" style="margin-bottom: 45px;">
-            <span class="title">Login</span>
+            
+            <div style="text-align: center;">
+                <span class="title">Login</span>
+            </div>
 
             <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
                 {{ csrf_field() }}
@@ -191,6 +194,26 @@
     margin-top: 30px;
     text-align: center;
 }
+
+
+.login_responsives{
+    width: 30%;
+    border: 1px ridge rgb(83 90 162);
+    margin-bottom: 4rem;
+}
+
+@media (max-width: 767px) {
+    .login_responsives{
+        width: 90%;
+        border: 1px ridge rgb(83 90 162);
+        margin-bottom: 4rem;
+    }
+}
+
+ 
+
+
+
 </style>
 @endsection
 

@@ -165,11 +165,18 @@
                                                 </div>
                                             </div>
                                             <!-- REDES SOSCIALES -->
-                                            <div class="form-group row">
+                                            <!-- <div class="form-group row">
                                                 <label class="col-sm-2 col-form-label">URL FACEBOOK</label>
                                                 <div class="col-sm-10">
                                                     <input type="text" name="txt_footer_facebook" class="form-control"
                                                         value="{{$footer_[0]->red_social_facebook}}" />
+                                                </div>
+                                            </div> -->
+                                            <div class="form-group row">
+                                                <label class="col-sm-2 col-form-label">URL YOUTOBE</label>
+                                                <div class="col-sm-10">
+                                                    <input type="text" name="txt_footer_youtobe" class="form-control"
+                                                        value="{{$footer_[0]->red_social_youtobe}}" />
                                                 </div>
                                             </div>
                                             <div class="form-group row">
@@ -179,13 +186,13 @@
                                                         value="{{$footer_[0]->red_social_instagram}}" />
                                                 </div>
                                             </div>
-                                            <div class="form-group row">
+                                            <!-- <div class="form-group row">
                                                 <label class="col-sm-2 col-form-label">URL TWETTER</label>
                                                 <div class="col-sm-10">
                                                     <input type="text" name="txt_footer_tweter" class="form-control"
                                                         value="{{$footer_[0]->red_social_tweter}}" />
                                                 </div>
-                                            </div>
+                                            </div> -->
                                             <div class="form-group row">
                                                 <label class="col-sm-2 col-form-label">Email</label>
                                                 <div class="col-sm-10">

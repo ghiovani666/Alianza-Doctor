@@ -148,9 +148,10 @@ class HomeController extends Controller {
                 'red_social_facebook' => $request->txt_footer_facebook,
                 'red_social_instagram' => $request->txt_footer_instagram,
                 'red_social_tweter' => $request->txt_footer_tweter,
+                'red_social_youtobe' => $request->txt_footer_youtobe,
+
                 'email' => $request->txt_footer_email,
                 'map_url' => $request->txt_map_url,
-
                 'url_image' => '/template_admin/img/logo/'.$filename, 
                 'updated_at' =>date("Y-m-d H:i:s")
                 ]); 
@@ -165,12 +166,14 @@ class HomeController extends Controller {
                'telefono' => $request->txt_footer_telefono,
                'web' => $request->txt_footer_web,
                'boletin' => $request->txt_footer_boletin,
+
                'red_social_facebook' => $request->txt_footer_facebook,
                'red_social_instagram' => $request->txt_footer_instagram,
                'red_social_tweter' => $request->txt_footer_tweter,
+               'red_social_youtobe' => $request->txt_footer_youtobe,
+
                'email' => $request->txt_footer_email,
                'map_url' => $request->txt_map_url,
-
                'updated_at' =>date("Y-m-d H:i:s")
               ]); 
 
