@@ -8,7 +8,8 @@ use Illuminate\Support\Facades\Session;
         //::::::::::::::::::::::: WEB HOME ::::::::::::::::::::::::::
         Route::get('/',                                     'Web\HomeController@index')->name('index');
         Route::get('/web_login',                            'Web\HomeController@web_login')->name('web_login');
-        Route::get('/web_blog',                             'Web\HomeController@web_blog');
+        Route::get('/web_blog/{id}',                        'Web\HomeController@web_blog');
+        Route::get('/web_blog_detalle/{id}',                'Web\HomeController@web_blog_detalle');
         Route::get('/logout',                               'Auth\LoginController@logout');
         Route::get('/web_contacto',                         'Web\HomeController@web_contacto');
         Route::get('/linkActividad/{idActividad}',          'Web\HomeController@linkActividad');

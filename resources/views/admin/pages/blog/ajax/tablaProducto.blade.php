@@ -14,7 +14,7 @@
         <tr>
             <td>{{ $rows->id }}</td>
             <td>{{ $rows->name_color }}</td>
-            <td>{{ $rows->description }}</td>
+            <td><?php echo mb_strimwidth($rows->description, 0, 210, "...");?> </td>
 
             <td><div class="attachment-block"><img style="width:100px;height: 120px;object-fit: cover;" src="{{ $rows->url_image }}" alt="Attachment Image"></div></td>
             <td>

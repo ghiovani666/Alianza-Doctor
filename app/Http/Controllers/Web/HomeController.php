@@ -53,8 +53,15 @@ class HomeController extends Controller
         return redirect()->back()->with(['success' => 'Formulario de contacto Enviar correctamente']);
     }
 
-    public function web_blog(){
-    	return view('web.pages.web_blog');
+    public function web_blog($indexs){
+        $limit = 2;       
+        $start_from = ($indexs-1) * $limit;  
+        $dataRows = DB::select("SELECT * FROM web_blog LIMIT ?, ?", [$start_from, $limit]);
+        return view('web.pages.web_blog')->with(compact('dataRows'))->with(compact('indexs'));
+    }
+    public function web_blog_detalle($id){
+        $dataRows = DB::select("SELECT * FROM web_blog WHERE id= ?", [$id]);
+        return view('web.pages.web_blog_detalle')->with(compact('dataRows'));
     }
 
     public function web_contacto(){

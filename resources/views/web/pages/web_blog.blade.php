@@ -18,11 +18,9 @@
     @include('web.partials.header.menu')
     <!--//Menu de Opciones-->
 </section>
-
-<!--team-section-->
-    <!--site-main start-->
     <div class="site-main">
-        <?php $bookings = DB::table('web_blog')->get();?>
+
+
 
         <div class="ttm-row sidebar ttm-sidebar-right ttm-bgcolor-white clearfix">
             <div class="container">
@@ -30,13 +28,8 @@
                 <div class="row">
                     <div class="col-lg-8 content-area">
 
-
-                    @foreach($bookings as $booking)
-
-                        <!-- post -->
+                    @foreach($dataRows as $booking)
                         <article class="post ttm-blog-classic clearfix">
-
-
                             <div class="ttm-post-featured-wrapper ttm-featured-wrapper">
                                 <div class="ttm-post-featured">
                                     <img class="img-fluid" src="{{ $booking->url_image }}" alt="">
@@ -52,31 +45,44 @@
                                         <span class="ttm-meta-line entry-date"><i class="fa fa-calendar"></i><time class="entry-date published" datetime="2018-07-28T00:39:29+00:00">July 28, 2018</time></span>
                                     </div>
                                     <header class="entry-header">
-                                        <h2 class="entry-title"><a href="blog-single.html">Ways To Tell Youre Suffering To From An Skion</a></h2>
+                                        <h2 class="entry-title"><a href="/web_blog_detalle/{{ $booking->id }}">{{ $booking->nombre }}</a></h2>
                                     </header>
                                 </div>
 
                                 <div class="entry-content" style="text-align: justify;">
                                     <div class="ttm-box-desc-text">
-                                        <p>{{ $booking->descripcion }}</p>
+                                        <p><?php echo mb_strimwidth($booking->descripcion, 0, 400, "...");?> </p>
                                     </div>
                                     <div class="ttm-blogbox-desc-footer">
                                         <div class="ttm-blogbox-footer-readmore">
-                                            <a class="ttm-btn ttm-btn-size-sm ttm-btn-shape-rounded ttm-btn-style-border ttm-btn-color-skincolor" href="#">Read More!</a>
+                                            <a class="ttm-btn ttm-btn-size-sm ttm-btn-shape-rounded ttm-btn-style-border ttm-btn-color-skincolor" href="/web_blog_detalle/{{ $booking->id }}">¡Leer más!</a>
                                         </div>
                                     </div>
                                 </div>
-
-                            </div><!-- ttm-blog-classic-content end -->
-                        </article><!-- post end -->
+                            </div>
+                        </article>
 
                         @endforeach
                         
                         <div class="pagination-block">
-                            <span class="page-numbers current">1</span>
-                            <a class="page-numbers" href="#">2</a>
-                            <a class="next page-numbers" href="#"><i class="ti ti-arrow-right"></i></a>
+                                <?php  
+                                    $total_records =DB::table('web_blog')->get()->count();
+                                    $total_pages = ceil($total_records / 2);  
+                                    $pagLink = "";                        
+                                        for ($i=1; $i<=$total_pages; $i++) {
+                                            if ($i==$indexs) {
+                                                $pagLink .= '<a class="page-numbers current" href="/web_blog/'.$i.'">'.$i.'</a>';  
+                                            }            
+                                            else  {
+                                                $pagLink .= '<a class="page-numbers" href="/web_blog/'.$i.'">'.$i.'</a>';  
+                                            }
+                                        };  
+                                    $pagLink .= '<a class="next page-numbers" href="#"><i class="ti ti-arrow-right"></i></a>';  
+                                        echo $pagLink;  
+                                ?>
                         </div>
+
+
                     </div>
                     <div class="col-lg-4 widget-area sidebar-right">
  

@@ -133,7 +133,7 @@
 
                                             </li>
                                             <li class="mega-menu-item active_menu_4">
-                                                <a href="/web_blog" class="mega-menu-link">Blog</a>
+                                                <a href="/web_blog/1" class="mega-menu-link">Blog</a>
                                             </li>
                                             <li class="mega-menu-item active_menu_5">
                                                 <a href="/web_profesional" class="mega-menu-link">Profesionales</a>
