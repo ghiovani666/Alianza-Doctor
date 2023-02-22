@@ -13,102 +13,143 @@ use Illuminate\Contracts\Filesystem\Filesystem;
 
 class PublicacionesController extends Controller {
 
+  //:::::::::::::::::::::::::: CRUD DE PUBLICACIONES ::::::::::::::::::::::::::
+
   public function admin_publicacion_internacional() {
-    $data_ = DB::table('web_codemirror')->whereIn('id', array(12))->get();
-    return view('admin.pages.publicacion.admin_publicacion_internacional')->with(compact('data_'));
+    $rowData_ = DB::table('web_publicaciones_categoria')->get()->toArray();
+    return view('admin.pages.publicacion.admin_publicacion_internacional')->with(compact('rowData_'));
+
   }
 
-  public function admin_publicacion_internacional_update(Request $request) 
-  {       
-      $data =  DB::table('web_codemirror')->where("id",12)->update(['descripcion' => $request->txt_descripcion]); 
-      return $data;
+  public function listarPublicaciones(Request $request) {
+    
+    if(intval($request->txt_id_publicacion_categoria) > 0){
+        $rowData_ = DB::table('web_publicaciones')->join('web_publicaciones_categoria', 'web_publicaciones.id_publicacion_categoria', '=', 'web_publicaciones_categoria.id_publicacion_categoria')
+        ->where("web_publicaciones.id_publicacion_categoria", $request->txt_id_publicacion_categoria)
+        ->get()->toArray();
+    }else{
+        $rowData_ = DB::table('web_publicaciones')->join('web_publicaciones_categoria', 'web_publicaciones.id_publicacion_categoria', '=', 'web_publicaciones_categoria.id_publicacion_categoria')
+        ->get()->toArray();
+    }
+    return view('admin.pages.publicacion.ajax.tablaPublicacion')->with(compact('rowData_'));
+}
+
+  public function crearPublicacion(Request $request) 
+  {        
+      switch($request->isValues) {
+        case 'CREAR': 
+          $file = $request->file('image');
+          
+          if($file != NULL){
+              $filename  =  time() .'_'.$file->getClientOriginalName();
+              $path = "template_admin/img/mc_publicacion";
+              $file->move($path,$filename);
+
+              $result = DB::table('web_publicaciones')->insert([
+                  'titulo'                    => $request->txt_titulo, 
+                  'descripcion'               => $request->txt_descripcion,
+                  'id_publicacion_categoria'  => $request->txt_id_publicacion_categoria,
+                  'url_image'                 => '/template_admin/img/mc_publicacion/'.$filename, 
+                  'created_at'                => date("Y-m-d H:i:s"),
+                  'updated_at'                => date("Y-m-d H:i:s")
+                ]);
+                return json_encode(['data' => 'Creado el registro correctamente!','state' => 'ok']);
+          }else{
+                return json_encode(['data' => 'Error : subir imagen!','state' => 'error']);
+              }
+
+              break;
+        case 'ACTUALIZAR': 
+                $file = $request->file('image');
+
+              if($file != NULL){
+                $url_imagen =  DB::table('web_publicaciones')->where('id_publicacion', '=', $request->txt_id_estudio)->get();
+              
+                if(file_exists(str_replace('/template_admin/', 'template_admin/',  $url_imagen[0]->url_image))){
+                  unlink(str_replace('/template_admin/', 'template_admin/',  $url_imagen[0]->url_image));
+                }
+                
+                  $filename  =  time() .'_'.$file->getClientOriginalName(); 
+                  $path = "template_admin/img/mc_publicacion";
+                  $file->move($path,$filename); 
+    
+                  $result  =  DB::table('web_publicaciones')
+                    ->where("id_publicacion",$request->txt_id_estudio)
+                    ->update([
+                      'titulo' => $request->txt_titulo, 
+                      'descripcion' => $request->txt_descripcion,
+                      'id_publicacion_categoria' => $request->txt_id_publicacion_categoria,
+                      'url_image' => '/template_admin/img/mc_publicacion/'.$filename, 
+                      'updated_at' =>date("Y-m-d H:i:s")
+                      
+                    ]); 
+  
+                    return json_encode(['data' => 'Actualizado el registro correctamente!','state' => 'ok','src' => '/template_admin/img/mc_publicacion/'.$filename]);
+
+                }else{
+                  $result  =  DB::table('web_publicaciones')
+                  ->where("id_publicacion",$request->txt_id_estudio)
+                  ->update([
+                    'titulo' => $request->txt_titulo, 
+                    'descripcion' => $request->txt_descripcion,
+                    'id_publicacion_categoria' => $request->txt_id_publicacion_categoria,
+                    'updated_at' =>date("Y-m-d H:i:s")
+                  ]); 
+                  return json_encode(['data' => 'Actualizado el registro correctamente!','state' => 'ok']);
+                }
+
+                break;
+
+          case 'ELIMINAR': 
+            $url_imagen =  DB::table('web_publicaciones')->where('id_publicacion', '=', $request->txt_id_estudio)->get();
+            if(file_exists(str_replace('/template_admin/', 'template_admin/',  $url_imagen[0]->url_image))){
+              unlink(str_replace('/template_admin/', 'template_admin/',  $url_imagen[0]->url_image));
+            }
+            DB::table('web_publicaciones')->where('id_publicacion', '=', $request->txt_id_estudio)->delete();
+            return json_encode(['data' => 'Elimino el registro correctamente!','state' => 'ok']);
+    
+                break;
+
+          case 'TEXTO': 
+
+            $result  =  DB::table('web_publicaciones')
+                ->where("id_publicacion",$request->txt_id_actividad)
+                ->update([
+                  'descripcion_texto' => $request->txt_descripcion_texto,
+                  'updated_at' =>date("Y-m-d H:i:s")
+                  
+                ]); 
+              return json_encode( $result);
+
+          case 'TEXTO_CATEGORIA': 
+            DB::table('web_publicaciones_categoria')->where("id_publicacion_categoria",1)->update(['nombre' => $request->txt_categoria_1,'updated_at' =>date("Y-m-d H:i:s")]); 
+            DB::table('web_publicaciones_categoria')->where("id_publicacion_categoria",2)->update(['nombre' => $request->txt_categoria_2,'updated_at' =>date("Y-m-d H:i:s")]); 
+            DB::table('web_publicaciones_categoria')->where("id_publicacion_categoria",3)->update(['nombre' => $request->txt_categoria_3,'updated_at' =>date("Y-m-d H:i:s")]); 
+            DB::table('web_publicaciones_categoria')->where("id_publicacion_categoria",4)->update(['nombre' => $request->txt_categoria_4,'updated_at' =>date("Y-m-d H:i:s")]); 
+            $result  =  DB::table('web_publicaciones_categoria')->where("id_publicacion_categoria",5)->update(['nombre' => $request->txt_categoria_5,'updated_at' =>date("Y-m-d H:i:s")]); 
+            return json_encode( $result);
+
+    }
   }
 
-  public function admin_saludnatural() {
-    $data_ = DB::table('web_codemirror')->whereIn('id', array(13))->get();
-    return view('admin.pages.publicacion.admin_saludnatural')->with(compact('data_'));
+
+  public function editarPublicacion(Request $request) {
+      $rowData_ = DB::table('web_publicaciones')
+      ->where("web_publicaciones.id_publicacion", $request->txt_id_estudio)
+      ->get()->toArray();
+      return json_encode($rowData_);
   }
 
-  public function admin_saludnatural_update(Request $request) 
-  {       
-      $data =  DB::table('web_codemirror')->where("id",13)->update(['descripcion' => $request->txt_descripcion]); 
-      return $data;
+ 
+
+
+
+  public function editServicioGaleria(Request $request) {
+    $rowData_ = DB::table('web_publicaciones')
+    ->where("web_publicaciones.id_publicacion", $request->txt_id_estudio)
+    ->get()->toArray();
+    return json_encode($rowData_);
   }
 
-  public function admin_informativos() {
-    $data_ = DB::table('web_codemirror')->whereIn('id', array(14))->get();
-    return view('admin.pages.publicacion.admin_informativos')->with(compact('data_'));
-  }
 
-  public function admin_informativos_update(Request $request) 
-  {       
-      $data =  DB::table('web_codemirror')->where("id",14)->update(['descripcion' => $request->txt_descripcion]); 
-      return $data;
-  }
-
-  public function admin_revistas() {
-    $data_ = DB::table('web_codemirror')->whereIn('id', array(15))->get();
-    return view('admin.pages.publicacion.admin_revistas')->with(compact('data_'));
-  }
-
-  public function admin_revistas_update(Request $request) 
-  {       
-      $data =  DB::table('web_codemirror')->where("id",15)->update(['descripcion' => $request->txt_descripcion]); 
-      return $data;
-  }
-
-  public function admin_productos_saludables() {
-    $data_ = DB::table('web_codemirror')->whereIn('id', array(16))->get();
-    return view('admin.pages.publicacion.admin_productos_saludables')->with(compact('data_'));
-  }
-
-  public function admin_productos_saludables_update(Request $request) 
-  {       
-      $data =  DB::table('web_codemirror')->where("id",16)->update(['descripcion' => $request->txt_descripcion]); 
-      return $data;
-  }
-
-  public function admin_investigaciones() {
-    $data_ = DB::table('web_codemirror')->whereIn('id', array(17))->get();
-    return view('admin.pages.publicacion.admin_investigaciones')->with(compact('data_'));
-  }
-
-  public function admin_investigaciones_update(Request $request) 
-  {       
-      $data =  DB::table('web_codemirror')->where("id",17)->update(['descripcion' => $request->txt_descripcion]); 
-      return $data;
-  }
-
-  public function admin_libros() {
-    $data_ = DB::table('web_codemirror')->whereIn('id', array(18))->get();
-    return view('admin.pages.publicacion.admin_libros')->with(compact('data_'));
-  }
-
-  public function admin_libros_update(Request $request) 
-  {       
-      $data =  DB::table('web_codemirror')->where("id",18)->update(['descripcion' => $request->txt_descripcion]); 
-      return $data;
-  }
-
-  public function admin_barletta() {
-    $data_ = DB::table('web_codemirror')->whereIn('id', array(19))->get();
-    return view('admin.pages.publicacion.admin_barletta')->with(compact('data_'));
-  }
-
-  public function admin_barletta_update(Request $request) 
-  {       
-      $data =  DB::table('web_codemirror')->where("id",19)->update(['descripcion' => $request->txt_descripcion]); 
-      return $data;
-  }
-
-  public function admin_boletines() {
-    $data_ = DB::table('web_codemirror')->whereIn('id', array(20))->get();
-    return view('admin.pages.publicacion.admin_boletines')->with(compact('data_'));
-  }
-
-  public function admin_boletines_update(Request $request) 
-  {       
-      $data =  DB::table('web_codemirror')->where("id",20)->update(['descripcion' => $request->txt_descripcion]); 
-      return $data;
-  }
 }

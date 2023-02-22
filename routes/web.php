@@ -137,8 +137,22 @@ use Illuminate\Support\Facades\Session;
         Route::post('/admin_fundacion_update',     'Admin\FundacionController@admin_fundacion_update');
 
         //::::::::::::::::::::::: WEB CONTROLLER PUBLICACION ::::::::::::::::::::::::::
+
+       
+        Route::get('/listarPublicaciones',                              'Admin\PublicacionesController@listarPublicaciones');
+        Route::post('/crearPublicacion',                                'Admin\PublicacionesController@crearPublicacion');
+        Route::post('/editarPublicacion',                               'Admin\PublicacionesController@editarPublicacion');
+
+
+        Route::post('/editServicioGaleria',                             'Admin\PublicacionesController@editServicioGaleria');
+        Route::get('/admin_nuestro_estudio',                            'Admin\PublicacionesController@admin_nuestro_estudio');
         Route::get('/admin_publicacion_internacional',                  'Admin\PublicacionesController@admin_publicacion_internacional');
         Route::post('/admin_publicacion_internacional_update',          'Admin\PublicacionesController@admin_publicacion_internacional_update');
+
+
+
+
+        
 
         Route::get('/admin_saludnatural',                               'Admin\PublicacionesController@admin_saludnatural');
         Route::post('/admin_saludnatural_update',                       'Admin\PublicacionesController@admin_saludnatural_update');

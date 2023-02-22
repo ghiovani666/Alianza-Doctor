@@ -16,19 +16,15 @@ class PublicacionesController extends Controller
 {
     public function web_publicacion_internacional(){
 
-        $slider = DB::table('web_home')->whereIn('id_home', array(1, 2))->get();
-        $bienvenidos = DB::table('web_home')->whereIn('id_home', array(6, 21,22,23))->get();
-        $ventajas = DB::table('web_codemirror')->whereIn('id', array(23))->get();
-        $nuestras_actividades = DB::table('web_nuestra_actividad')->get();
-        $nuestro_estudio = DB::table('web_nuestro_estudio')->join('web_nuestro_estudio_categoria', 'web_nuestro_estudio.id_estudio_categoria', '=', 'web_nuestro_estudio_categoria.id_estudio_categoria')->get();
-        
-        $nuestro_estudio_categoria = DB::table('web_nuestro_estudio_categoria')->get();
+        $web_publicaciones = DB::table('web_publicaciones')
+        ->join('web_publicaciones_categoria', 'web_publicaciones.id_publicacion_categoria', '=', 'web_publicaciones_categoria.id_publicacion_categoria')->get();
 
-        return view('web.pages.publicacion.web_publicacion_internacional')->with(compact('slider'))->with(compact('bienvenidos'))->with(compact('ventajas'))->with(compact('nuestras_actividades'))->with(compact('nuestro_estudio_categoria'))->with(compact('nuestro_estudio'));
+        return view('web.pages.publicacion.web_publicacion_internacional')
+                ->with(compact('web_publicaciones'));
 
         // $data_ = DB::table('web_codemirror')->whereIn('id', array(12))->get();
         // if(Auth::check())
-        //     return view('web.pages.publicacion.web_publicacion_internacional')->with(compact('slider'))->with(compact('bienvenidos'))->with(compact('ventajas'))->with(compact('nuestras_actividades'))->with(compact('nuestro_estudio_categoria'))->with(compact('nuestro_estudio'));
+        //     return view('web.pages.publicacion.web_publicacion_internacional')->with(compact('slider'))->with(compact('bienvenidos'))->with(compact('ventajas'))->with(compact('nuestras_actividades'))->with(compact('nuestro_estudio_categoria'))->with(compact('web_publicaciones'));
         // else
         //      return json_encode(['data' =>  'Usted no tiene una cuenta, registrese','state' => 'login']);
     }
