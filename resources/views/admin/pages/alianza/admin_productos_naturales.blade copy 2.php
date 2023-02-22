@@ -37,7 +37,7 @@
                         </div>
                     </div>
 
-                    <div class="col-md-12 col-xs-5">
+                    <div class="col-md-8 col-xs-5">
                         <div class="event-details">
                             <span>
                                 <label>Título <i class="fas fa-edit"></i></label>
@@ -46,11 +46,12 @@
                                 </h1>
                             </span>
                             <label>Descripción <i class="fas fa-edit"></i></label>
+
+
                             <div class="row">
                                 <div class="col-md-12">
                                     <p id="txt_descripcion" contenteditable="true" class="deletable"
                                         style="text-align: justify;">
-                                        {!! $data_[0]->descripcion !=null ?$data_[0]->descripcion :"
                                         Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
                                         Ipsum
                                         has been the industry's standard dummy text ever since the 1500s, when an
@@ -66,15 +67,12 @@
                                         Ipsum passages, and more recently with desktop publishing software like Aldus
                                         PageMaker
                                         including versions of Lorem Ipsum
-                                        " !!}
 
                                     </p>
                                 </div>
-                                <div class="col-md-9">
-                                    <label><i class="fas fa-edit"></i></label>
-                                    <p id="txt_descripcion2" contenteditable="true" class="deletable"
+                                <div class="col-md-6">
+                                <p id="txt_descripcion" contenteditable="true" class="deletable"
                                         style="text-align: justify;">
-                                        {!! $data_[0]->descripcion2 !=null ?$data_[0]->descripcion2 :"
                                         Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
                                         Ipsum
                                         has been the industry's standard dummy text ever since the 1500s, when an
@@ -90,31 +88,31 @@
                                         Ipsum passages, and more recently with desktop publishing software like Aldus
                                         PageMaker
                                         including versions of Lorem Ipsum
-                                        " !!}
-
                                     </p>
                                 </div>
-                                <div class="col-md-3 posicion_imagenes1">
-                                    <div class="standard-messaging">
-                                        <input type="file" name="image1" id="image1" multiple accept="image/*"
-                                            style="display:none" onchange="handleFiles(this.files)">
-                                        <a href="#" id="fileSelect" class="helper center">
-
-                                            <div id="fileList">
-                                                <img src="{{$data_[0]->url_image1 !=null ?$data_[0]->url_image1 :'/img/mc_admin/perrito.jpg' }} "
-                                                    style="width: 190px;" />
-                                            </div>
-                                            Cambie la Imagen (Formato
-                                            .jpg, .png,
-                                            .gif)
-                                        </a>
-                                    </div>
+                                <div class="col-md-6">
+                                <p id="txt_descripcion" contenteditable="true" class="deletable"
+                                        style="text-align: justify;">
+                                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
+                                        Ipsum
+                                        has been the industry's standard dummy text ever since the 1500s, when an
+                                        unknown
+                                        printer
+                                        took a galley of type and scrambled it to make a type specimen book. It has
+                                        survived not
+                                        only
+                                        five centuries, but also the leap into electronic typesetting, remaining
+                                        essentially
+                                        unchanged. It was popularised in the 1960s with the release of Letraset sheets
+                                        containing Lorem
+                                        Ipsum passages, and more recently with desktop publishing software like Aldus
+                                        PageMaker
+                                        including versions of Lorem Ipsum
+                                    </p>
                                 </div>
                                 <div class="col-md-12">
-                                    <label><i class="fas fa-edit"></i></label>
-                                    <p id="txt_descripcion3" contenteditable="true" class="deletable"
+                                <p id="txt_descripcion" contenteditable="true" class="deletable"
                                         style="text-align: justify;">
-                                        {!! $data_[0]->descripcion3 !=null ?$data_[0]->descripcion3 :"
                                         Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
                                         Ipsum
                                         has been the industry's standard dummy text ever since the 1500s, when an
@@ -130,14 +128,25 @@
                                         Ipsum passages, and more recently with desktop publishing software like Aldus
                                         PageMaker
                                         including versions of Lorem Ipsum
-                                        " !!}
-
                                     </p>
                                 </div>
                             </div>
                         </div>
                     </div>
-
+                    <div class="col-md-4 col-xs-7 posicion_imagenes">
+                        <span>
+                            <div class="standard-messaging">
+                                <input type="file" id="fileElem" multiple accept="image/*" style="display:none"
+                                    onchange="handleFiles(this.files)">
+                                <div id="fileList">
+                                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/152171/thumbs_up.jpg"
+                                        style="width: 190px;" />
+                                </div>
+                                <a href="#" id="fileSelect" class="helper center">Cambie la Imagen (Formato .jpg, .png,
+                                    .gif)</a>
+                            </div>
+                        </span>
+                    </div>
 
                     <div class="col-md-6">
                         <div class="modal-footer">
@@ -157,22 +166,12 @@
 </div>
 <link rel="stylesheet" type="text/css" href="{{ URL::asset('css/plantilla.css') }}" />
 <style>
-.posicion_imagenes1 {
+.posicion_imagenes {
     text-align: center;
     margin-top: auto;
     position: absolute;
     right: 0;
-    top: 37rem;
-}
-
-@media (max-width:767px) {
-    .posicion_imagenes1 {
-        text-align: center;
-        margin-top: auto;
-        position: inherit !important;
-        right: 0;
-        top: 37rem;
-    }
+    top: 19rem;
 }
 </style>
 @endsection
@@ -181,7 +180,7 @@
 window.URL = window.URL || window.webkitURL;
 
 var fileSelect = document.getElementById("fileSelect"),
-    fileElem = document.getElementById("image1"),
+    fileElem = document.getElementById("fileElem"),
     fileList = document.getElementById("fileList");
 
 fileSelect.addEventListener("click", function(e) {
@@ -204,8 +203,8 @@ function handleFiles(files) {
 
             var img = document.createElement("img");
             img.src = window.URL.createObjectURL(files[i]);
-            img.style.width = "150px";
-            img.style.height = "150px";
+            img.style.width = "200px";
+            img.style.height = "200px";
 
             img.onload = function() {
                 window.URL.revokeObjectURL(this.src);
@@ -225,8 +224,6 @@ $('#saveService').on('submit', function(e) {
     let formData = new FormData(this);
     formData.append('txt_titulo1', $('#txt_titulo1').text());
     formData.append('txt_descripcion', $('#txt_descripcion').html());
-    formData.append('txt_descripcion2', $('#txt_descripcion2').html());
-    formData.append('txt_descripcion3', $('#txt_descripcion3').html());
 
     axios.post('admin_productos_naturales_update',
         formData, {

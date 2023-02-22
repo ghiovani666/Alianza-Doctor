@@ -22,25 +22,49 @@
 <!--team-section-->
 <section class=" team-section clearfix">
     <div class="container">
-        <!-- row -->
+
         <div class="row">
             <div class="col-lg-12">
-                <!-- section-title -->
+
                 <div class="section-title with-sep title-style-center_text">
-                    <div class="title-desc">{!! $data_[0]->descripcion !!}</div>
-                </div><!-- section-title end -->
+                    <div class="title-desc">
+                        <div style="text-align: left;">
+                            <h2 class="title">{{ $data_[0]->title1 }}</h2>
+                        </div>
+                        <div>
+                            <br>
+
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <p style="text-align: justify;">
+                                        {!! $data_[0]->descripcion !!}
+                                    </p>
+                                </div>
+                                <div class="col-md-9">
+                                    <p style="text-align: justify;">
+                                        {!! $data_[0]->descripcion2 !!}
+                                    </p>
+                                </div>
+                                <div class="col-md-3">
+                                <img src="{{$data_[0]->url_image1 !=null ?$data_[0]->url_image1 :'/img/mc_admin/perrito.jpg' }}"/>
+                                </div>
+                                <div class="col-md-12">
+                                    <p style="text-align: justify;">
+                                        {!! $data_[0]->descripcion3 !!}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
-        </div><!-- row end -->
+        </div>
     </div>
 </section>
 <!--team-section end-->
-<style >
-    table.table-bordered >tbody>tr>td img{
-        width: 90rem !important;
-    }
-    /* li:nth-child(2) {
-  background: lightgreen;
-} */
+<style>
 </style>
 @endsection
 

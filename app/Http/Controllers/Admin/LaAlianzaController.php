@@ -53,8 +53,44 @@ class LaAlianzaController extends Controller {
 
   public function admin_productos_naturales_update(Request $request) 
   {       
-      $data =  DB::table('web_codemirror')->where("id",8)->update(['descripcion' => $request->txt_descripcion]); 
-      return $data;
+
+    $file1 = $request->file('image1');
+  
+    if($file1)
+    {
+        //========================= IMAGEN 1 =====================================
+            $url_imagen1 =  DB::table('web_codemirror')->where('id', '=', 8)->get();
+            
+            if(file_exists(str_replace('/img/', 'img/',  $url_imagen1[0]->url_image1))){
+                unlink(str_replace('/img/', 'img/',  $url_imagen1[0]->url_image1));
+            }
+            
+            $filename1  =  time() .'_'.$file1->getClientOriginalName();
+
+            $path = "img/mc_alianza";
+            $file1->move($path,$filename1);
+        //=========================? =====================================
+        //=========================? =====================================
+
+        
+            $data= DB::table('web_codemirror')->where("id",8)->update([
+                'title1' => $request->txt_titulo1,
+                'descripcion' => $request->txt_descripcion,
+                'descripcion2' => $request->txt_descripcion2,
+                'descripcion3' => $request->txt_descripcion3,
+                'url_image1' => '/img/mc_alianza/'.$filename1, 
+              ]); 
+
+    }else{
+          $data=  DB::table('web_codemirror')->where("id",8)->update([
+            'title1' => $request->txt_titulo1,
+            'descripcion' => $request->txt_descripcion,
+            'descripcion2' => $request->txt_descripcion2,
+            'descripcion3' => $request->txt_descripcion3,
+          ]); 
+        }
+
+    return $data;
   }
 
   public function admin_formacion() {

@@ -74,7 +74,7 @@ tpj(document).ready(function() {
         responsiveLevels:[1240,1024,778,480],
         visibilityLevels:[1240,1024,778,480],
         gridwidth:[1240,1024,778,480],
-        gridheight:[640,640,480,320],
+        gridheight:[550,550,480,320],
         lazyType:"none",
         parallax: {
             type:"mouse",

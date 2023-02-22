@@ -17,3 +17,13 @@ $(form).html('<input type="hidden" name="id" value="' + myid + '" />');
 document.body.appendChild(form);
 $(form).submit();
 document.body.removeChild(form);
+
+//=========================== editar texto
+https://codepen.io/terned/pen/gLNoGL
+https://codepen.io/pehaa/pen/zYxjgVM
+https://codepen.io/rohanrit/pen/YzyOBjJ
+https://codepen.io/sinfullycoded/pen/oNLBJpm
+
+//==================== SLIDER
+web\pages\web_index.blade.php
+

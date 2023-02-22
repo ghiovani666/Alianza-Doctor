@@ -61,7 +61,7 @@
                           <li class="nav-item">
                               <a href="<?php echo siteURL().'/admin/admin_nuestro_estudio'; ?>" class="nav-link">
                                   <i class="far fa-circle nav-icon"></i>
-                                  <p>Nuestros Estudios</p>
+                                  <p>Nuestras publicaciones</p>
                               </a>
                           </li>
                           <li class="nav-item">
@@ -238,12 +238,12 @@
                                   <p>Curso básico online</p>
                               </a>
                           </li>
-                          <li class="nav-item">
+                          <!-- <li class="nav-item">
                               <a href="<?php echo siteURL().'/admin/adminServicioHello'; ?>" class="nav-link">
                                   <i class="far fa-circle nav-icon"></i>
                                   <p>Charlas,Cursos y Talleres</p>
                               </a>
-                          </li>
+                          </li> -->
                       </ul>
                   </li>
 

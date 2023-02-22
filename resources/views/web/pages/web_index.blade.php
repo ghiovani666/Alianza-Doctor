@@ -117,7 +117,7 @@
                             <img class="img-fluid" src="{{$bienvenidos[0]->url_image}}" alt="">
                         </div>
                     </div>
-                    <div class="col-xl-6 col-lg-7 col-xs-12">
+                    <div class="col-xl-6 col-lg-7 col-xs-12" style="padding-left: 45px;margin-bottom: 45px;">
                         <div class="pt-5 res-991-pt-0">
                             <!-- section title -->
                             <div class="section-title">
@@ -258,7 +258,7 @@
                         <!-- section-title -->
                         <div class="section-title with-sep title-style-center_text">
                             <div class="title-header">
-                                <h2 class="title">Nuestros Estudios</h2>
+                                <h2 class="title">Nuestras publicaciones</h2>
                             </div>
 
                         </div><!-- section-title end -->
@@ -298,7 +298,7 @@
                                                             <div class="featured-title">
                                                                 <h5><a href="javascript:void(0)" onClick="webRedireccionA({{ $values->id_estudio }})">{{ $values->titulo }}</a></h5>
                                                             </div>
-                                                            <span class="category">{{ $values->descripcion }}</span>
+                                                            <span class="category" style="text-align: justify;">{{ $values->descripcion }}</span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -359,8 +359,7 @@
 
                                 <div class="pb-15">
                                     <h4>Comunícate</h4>
-                                    <p> Si desea contactar con nosotros, rellene el formulario que ponemos a su
-                                        disposición, le atenderemos gustosamente sin ningún tipo de compromiso.</p>
+                                    <p> Si quieres contactar con nosotros, rellena el formulario y te atenderemos sin compromiso alguno.</p>
                                 </div>
                                 <!--featured-icon-box-->
                                 <div class="featured-icon-box icon-align-before-content icon-ver_align-top">
@@ -503,7 +502,7 @@
 
 
 
-    <div class="first-footer ttm-bgcolor-skincolor">
+    <!-- <div class="first-footer ttm-bgcolor-skincolor">
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 widget-area">
@@ -538,7 +537,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 
     <div class="second-footer">
         <div class="container">

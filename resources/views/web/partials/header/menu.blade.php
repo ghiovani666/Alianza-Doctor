@@ -109,7 +109,7 @@
                                             <li class="mega-menu-item active_menu_4">
                                                 <a href="javascript:void(0)" class="mega-menu-link">Publicaciones</a>
                                                 <ul class="mega-submenu">
-                                                    <li><a href="javascript:void(0)" onClick="webRedireccionx('web_publicacion_internacional')">Dr. RathInte rnacional</a></li>
+                                                    <li><a href="javascript:void(0)" onClick="webRedireccionx('web_publicacion_internacional')">Dr. Rath Internacional</a></li>
                                                     <li><a href="javascript:void(0)" onClick="webRedireccionx('web_saludnatural')">Folletos para la Salud Natural</a></li>
                                                     <li><a href="javascript:void(0)" onClick="webRedireccionx('web_informativos')">Boletines Informativos</a></li>
                                                     <li><a href="javascript:void(0)" onClick="webRedireccionx('web_revistas')">Revistas</a></li>
@@ -127,7 +127,7 @@
                                                     <li><a href="/web_curso_basico">Curso básico online</a>
                                                     </li>
                                                     <li><a href="/web_servicios_all/1">Cursos</a></li>
-                                                    <li><a href="/web_servicios_all/2">Cursos y talleres</a></li>
+                                                    <!-- <li><a href="/web_servicios_all/2">Cursos y talleres</a></li> -->
                                                     <!-- <li><a href="/web_servicios_all/3">Talleres Escolares</a></li> -->
                                                 </ul>
 
