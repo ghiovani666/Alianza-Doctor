@@ -14,13 +14,19 @@
             <td>{{ $rows->id_actividad }}</td>
             <td>{{ $rows->titulo }}</td>
             <td>{{ $rows->descripcion }}</td>
-            <td>
-                <a href="javascript:void(0)" onclick="openModalTraining({{ $rows->id_actividad }},'ACTUALIZAR' )"
-                    class="btn btn-block bg-gradient-success"><i class="far fa-edit"></i> </a>
-                <a href="javascript:void(0)" onclick="openModalTraining({{ $rows->id_actividad }},'ELIMINAR' )"
-                    class="btn btn-block bg-gradient-danger"><i class="fas fa-trash-alt"></i> </a>
-                <a href="javascript:void(0)" onclick="openModalTraining({{ $rows->id_actividad }},'TEXTO' )"
-                    class="btn btn-block bg-gradient-primary"><i class="fab fa-adversal"></i> </a>
+ 
+            <td  style="width: 7rem;">
+                <div class="row" style="display: flex;justify-content: space-around;">
+                    <a href="javascript:void(0)" style="width: 40px;"
+                        onclick="openModalTraining({{ $rows->id_actividad }},'ACTUALIZAR' )"
+                        class="btn btn-success"><i class="far fa-edit"></i> </a>
+                    <a href="javascript:void(0)" style="width: 40px;"
+                        onclick="openModalTraining({{ $rows->id_actividad }},'ELIMINAR' )"
+                        class="btn btn-danger"><i class="fas fa-trash-alt"></i> </a>
+                    <a href="javascript:void(0)" style="width: 40px;"
+                        onclick="openModalTraining({{ $rows->id_actividad }},'TEXTO' )"
+                        class="btn btn-primary"><i class="fab fa-adversal"></i> </a>
+                </div>
             </td>
 
         </tr>

@@ -13,7 +13,7 @@
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item"><a href="#">Inicio</a></li>
 
                     </ol>
                 </div><!-- /.col -->
@@ -22,37 +22,21 @@
     </div>
     <!-- /.content-header -->
 
-    <!-- Main content -->
     <section class="content">
         <div class="container-fluid">
             <div class="row">
-                <div id="msj_alert__"></div>
-                <div class="col-12">
-
-                    <div class="pull-right" style="text-align: center;">
-                        <a href="javascript:void(0)" onclick="openModalTraining(false,'CREAR')"
-                            class="btn btn-block bg-gradient-success"><i class="far fa-edit"></i> Crear Actividad</a>
-                    </div>
-
-                    <div class="row" style="text-align: center;display: initial;">
-
-                        <div class="card">
-                            <div class="card-header">
-                                <h3 class="card-title">Nuestras Actividades</h3>
-                            </div>
-                            <!-- /.card-header -->
-                            <div class="card-body" id="updateDiv"></div>
-                            <!-- /.card-body -->
-                        </div>
-                        <!-- /.card -->
-                    </div>
-                    <!-- /.col -->
+                <div class="col-md-4">.</div>
+                <div class="col-md-6">.</div>
+                <div class="col-md-2">
+                    <a href="javascript:void(0)" onclick="openModalTraining(false,'CREAR')"
+                        class="btn btn-block bg-gradient-success"><i class="far fa-edit"></i> Crear</a>
                 </div>
-                <!-- /.row -->
             </div>
-            <!-- /.container-fluid -->
+            <div class="row">
+                <div class="card-body" id="updateDiv"></div>
+            </div>
+
     </section>
-    <!-- /.content -->
 
     <!-- Modal Descripcion-->
     <div class="modal fade" id="modalTraining" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"

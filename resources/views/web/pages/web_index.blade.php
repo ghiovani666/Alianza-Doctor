@@ -209,7 +209,7 @@
                         <!-- section-title -->
                         <div class="section-title with-sep title-style-center_text">
                             <div class="title-header">
-                                <h5 style="margin-top: 45px;font-size: 25px;">Nuestras Publicaciones</h5>
+                                <h5 style="margin-top: 45px;font-size: 25px;">Nuestros Cursos</h5>
                             </div><!-- section-title end -->
                         </div>
                     </div><!-- row end -->

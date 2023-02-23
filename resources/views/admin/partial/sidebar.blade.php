@@ -55,7 +55,7 @@
                           <li class="nav-item">
                               <a href="<?php echo siteURL().'/admin/admin_nuestra_actividad'; ?>" class="nav-link">
                                   <i class="far fa-circle nav-icon"></i>
-                                  <p>Nuestras Actividades</p>
+                                  <p>Nuestros Cursos</p>
                               </a>
                           </li>
                           <li class="nav-item">
@@ -163,73 +163,13 @@
                   </li>
 
                   <li class="nav-item">
-                      <a href="<?php echo siteURL().'/admin/admin_publicacion_internacional'; ?>" class="nav-link">
+                      <a href="<?php echo siteURL().'/admin/admin_publicacion'; ?>" class="nav-link">
                           <i class="nav-icon fas fa-copy"></i>
                           <p> Publicaciones<i class="fas fa-podcast right"></i> </p>
                       </a>
                   </li>
 
-                  <li class="nav-item">
-                      <a href="#" class="nav-link">
-                          <i class="nav-icon fas fa-copy"></i>
-                          <p>
-                              Publicaciones
-                              <i class="fas fa-angle-left right"></i>
-                          </p>
-                      </a>
-                      <!-- <ul class="nav nav-treeview">
-                          <li class="nav-item">
-                              <a href="<?php echo siteURL().'/admin/admin_publicacion_internacional'; ?>" class="nav-link">
-                                  <i class="nav-icon far fa-circle text-warning"></i>
-                                  <p>Dr. Rath Internacional</p>
-                              </a>
-                          </li>
-                          <li class="nav-item">
-                              <a href="<?php echo siteURL().'/admin/admin_saludnatural'; ?>" class="nav-link">
-                                  <i class="nav-icon far fa-circle text-warning"></i>
-                                  <p>Folletos - Salud Natural</p>
-                              </a>
-                          </li>
-                          <li class="nav-item">
-                              <a href="<?php echo siteURL().'/admin/admin_informativos'; ?>" class="nav-link">
-                                  <i class="nav-icon far fa-circle text-warning"></i>
-                                  <p>Boletines Informativos</p>
-                              </a>
-                          </li>
-                          <li class="nav-item">
-                              <a href="<?php echo siteURL().'/admin/admin_revistas'; ?>" class="nav-link">
-                                  <i class="nav-icon far fa-circle text-warning"></i>
-                                  <p>Revistas</p>
-                              </a>
-                          </li>
-                          <li class="nav-item">
-                              <a href="<?php echo siteURL().'/admin/admin_productos_saludables'; ?>" class="nav-link">
-                                  <i class="nav-icon far fa-circle text-warning"></i>
-                                  <p>Productos Saludables</p>
-                              </a>
-                          </li>
-                          <li class="nav-item">
-                              <a href="<?php echo siteURL().'/admin/admin_investigaciones'; ?>" class="nav-link">
-                                  <i class="nav-icon far fa-circle text-warning"></i>
-                                  <p>Investigaciones</p>
-                              </a>
-                          </li>
-                          <li class="nav-item">
-                              <a href="<?php echo siteURL().'/admin/admin_libros'; ?>" class="nav-link">
-                                  <i class="nav-icon far fa-circle text-warning"></i>
-                                  <p>Libros</p>
-                              </a>
-                          </li>
-
-                          <li class="nav-item">
-                              <a href="<?php echo siteURL().'/admin/admin_barletta'; ?>" class="nav-link">
-                                  <i class="nav-icon far fa-circle text-warning"></i>
-                                  <p>Declaración Barletta</p>
-                              </a>
-                          </li>
-                      </ul> -->
-                  </li>
-
+                  
                   <li class="nav-item">
                       <a href="#" class="nav-link">
                           <i class="nav-icon fas fa-copy"></i>

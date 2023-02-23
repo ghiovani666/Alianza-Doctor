@@ -99,16 +99,16 @@
                             </ul>
                         </aside>
                         <aside class="widget tagcloud-widget with-title">
-                            <h3 class="widget-title">Populares Tags</h3>
+                            <h3 class="widget-title">Categorías</h3>
                             <div class="tagcloud">
-                                <a href="#" class="tag-cloud-link">Laboratorio</a>
-                                <a href="#" class="tag-cloud-link">Wet lab</a>
-                                <a href="#" class="tag-cloud-link">Reagent bottle</a>
-                                <a href="#" class="tag-cloud-link">Gemological</a>
-                                <a href="#" class="tag-cloud-link">Laboratory safety</a>
-                                <a href="#" class="tag-cloud-link">equipment‎</a>
-                                <a href="#" class="tag-cloud-link">Biochemistry research</a>
-                                <a href="#" class="tag-cloud-link">Commercial</a>
+                                <a href="#" class="tag-cloud-link">Medicina</a>
+                                <a href="#" class="tag-cloud-link">Productos Naturales</a>
+                                <a href="#" class="tag-cloud-link">Consejos</a>
+                                <a href="#" class="tag-cloud-link">Conferencias</a>
+                                <a href="#" class="tag-cloud-link">Lugares de Meditación</a>
+                                <a href="#" class="tag-cloud-link">Tecnología</a>
+                                <a href="#" class="tag-cloud-link">Noticias Médicas</a>
+                                <a href="#" class="tag-cloud-link">Inscripciones</a>
                             </div>
                         </aside>
                     </div>

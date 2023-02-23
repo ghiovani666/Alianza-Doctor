@@ -18,15 +18,19 @@
             <td>{{ $rows->titulo }}</td>
             <td>{{ $rows->descripcion }}</td>
             <td><div class="attachment-block"><img class="attachment-img" src="{{ $rows->url_image }}" alt="Attachment Image"></div></td>
-            <td>
-                <a href="javascript:void(0)" onclick="openModalTraining({{ $rows->id_estudio }},'ACTUALIZAR' )"
-                    class="btn btn-block bg-gradient-success"><i class="far fa-edit"></i> </a>
-                <a href="javascript:void(0)" onclick="openModalTraining({{ $rows->id_estudio }},'ELIMINAR' )"
-                    class="btn btn-block bg-gradient-danger"><i class="fas fa-trash-alt"></i> </a>
-                    <a href="javascript:void(0)" onclick="openModalTraining({{ $rows->id_estudio }},'TEXTO' )"
-                    class="btn btn-block bg-gradient-primary"><i class="fab fa-adversal"></i> </a>
+            <td  style="width: 7rem;">
+                <div class="row" style="display: flex;justify-content: space-around;">
+                    <a href="javascript:void(0)" style="width: 40px;"
+                        onclick="openModalTraining({{ $rows->id_estudio }},'ACTUALIZAR' )"
+                        class="btn btn-success"><i class="far fa-edit"></i> </a>
+                    <a href="javascript:void(0)" style="width: 40px;" 
+                        onclick="openModalTraining({{ $rows->id_estudio }},'ELIMINAR' )"
+                        class="btn btn-danger"><i class="fas fa-trash-alt"></i> </a>
+                    <a href="javascript:void(0)" style="width: 40px;"
+                        onclick="openModalTraining({{ $rows->id_estudio }},'TEXTO' )"
+                        class="btn btn-primary"><i class="fab fa-adversal"></i> </a>
+                </div>
             </td>
-
         </tr>
         @endforeach
     </tbody>

@@ -13,7 +13,7 @@
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item"><a href="#">Inicio</a></li>
                         <li class="breadcrumb-item active">Tabla de Diapositivas</li>
                     </ol>
                 </div><!-- /.col -->
@@ -27,27 +27,175 @@
     <section class="content">
         <div class="container-fluid">
             <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <div class="input-group">
+                                @if(count($rowData_)!=0)
+                                <select class="custom-select" id="txt_id_servicio_filtrar"
+                                    name="txt_id_servicio_filtrar">
+                                    <option value="0">------------All ---------------- </option>
+                                    @foreach ($rowData_ as $rows)
+                                    <option value="{{$rows->id_estudio_categoria}}">{{$rows->nombre}}</option>
+                                    @endforeach
+                                </select>
+                                @endif
 
-                <div class="col-md-12">
-                    <div class="card">
-                        <div class="card-header">
-                            <h3 class="card-title">Actualizar Categorias</h3>
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-secondary" id="btnBuscar" type="button"><i
+                                        class="fa fa-search"></i></button>
+                            </div>
                         </div>
-                        <!-- /.card-header -->
-                        <div class="card-body">
-                            <!-- we are adding the accordion ID so Bootstrap's collapse plugin detects it -->
-                            <div id="accordion">
-                                <div class="card card-success">
-                                    <div class="card-header">
-                                        <h4 class="card-title w-100">
-                                            <a class="d-block w-100" data-toggle="collapse" href="#collapseThree">
-                                                Abrir Categorias
-                                            </a>
-                                        </h4>
+                    </div>
+                </div>
+                <div class="col-md-4">.</div>
+                <div class="col-md-2">
+                    <a href="javascript:void(0)" onclick="openModalTags()"
+                        class="btn btn-block bg-gradient-success"><i class="far fa-edit"></i> Tags</a>
+                </div>
+                <div class="col-md-2">
+                    <a href="javascript:void(0)" onclick="openModalTraining(false,'CREAR')"
+                        class="btn btn-block bg-gradient-success"><i class="far fa-edit"></i> Crear</a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="card-body" id="updateDiv"></div>
+            </div>
+
+    </section>
+ 
+
+    <!-- Modal de CRUD-->
+    <div class="modal fade" id="modalTraining" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="txt_tituloModal">Actualizar Estudios</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="uploadFormTraining">
+                        <input type="hidden" name="txt_id_estudio" />
+                        <input type="hidden" name="isValues" />
+
+                        {{ csrf_field() }}
+                        <div class="row">
+                            <div class="col-sm-12">
+
+                                <div class="card card-primary">
+                                    <div class="card-body">
+                                        <div class="form-group">
+                                            <div class="form-group">
+                                                <label>Categoria</label>
+                                                <select class="form-control" name="txt_id_estudio_categoria">
+                                                    @foreach ($rowData_ as $rows)
+                                                    <option value="{{$rows->id_estudio_categoria}}">{{$rows->nombre}}
+                                                    </option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div class="form-group">
+                                                <label>Titulo</label>
+                                                <input type="text" class="form-control" name="txt_titulo" required>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="txt_descripcion">Descripción</label>
+                                            <textarea class="form-control" name="txt_descripcion" rows="3"
+                                                placeholder="Enter ..." required></textarea>
+                                        </div>
+                                        <div class="form-group" style="text-align: center">
+                                            <div class="contain animated bounce">
+                                                <div class="alert"></div>
+                                                <div id='img_contain'>
+                                                    <img id="blah" src="http://www.clker.com/cliparts/c/W/h/n/P/W/generic-image-file-icon-hi.png"
+                                                        alt="your image" title='' name="txt_url_image" />
+                                                </div>
+                                                <div class="input-group">
+                                                    <div class="custom-file">
+                                                        <input type="file" id="inputGroupFile01" name="image"
+                                                            class="imgInp custom-file-input"
+                                                            aria-describedby="inputGroupFileAddon01">
+                                                        <label class="custom-file-label" for="inputGroupFile01">Choose
+                                                            file</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div id="collapseThree" class="collapse" data-parent="#accordion">
-                                        <div class="card-body">
-                                            <form id="uploadFormTextoCategoria">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                            <button class="btn btn-primary" id="btn_sumit">Aplicar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Texto-->
+    <div class="modal fade" id="modalDescripcionTexto" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" style="max-width: 90%;" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="txt_tituloModal">Enlace Texto</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="uploadFormTexto">
+                        <input type="hidden" name="txt_id_actividad" />
+                        <input type="hidden" name="isValues" />
+
+                        {{ csrf_field() }}
+                        <div class="row">
+                            <div class="col-sm-12">
+
+                                <div class="card card-primary">
+                                    <div class="card-body">
+                                        <div class="form-group">
+                                            <label for="txt_descripcion">Descripción</label>
+                                            <textarea id="summernote" name="txt_descripcion_texto"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                            <button class="btn btn-primary" id="btn_sumit">Aplicar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+        <!-- Modal Texto-->
+        <div class="modal fade" id="modalTags" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" style="max-width: 90%;" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="txt_tituloModal">Actualizar Etiquetas</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                <form id="uploadFormTextoCategoria">
                                                 <input type="hidden" name="isValues" value="TEXTO_CATEGORIA" />
 
                                                 {{ csrf_field() }}
@@ -107,184 +255,12 @@
                                                     <button type="submit" class="btn btn-primary">Actualizar</button>
                                                 </div>
                                             </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /.card-body -->
-                    </div>
-                    <!-- /.card -->
-                </div>
-
-                <div class="col-12">
-                    <div class="pull-right" style="text-align: center;">
-                        <a href="javascript:void(0)" onclick="openModalTraining(false,'CREAR')"
-                            class="btn btn-block bg-gradient-success"><i class="far fa-edit"></i> Crear Estudio</a>
-                    </div>
-
-                    <div class="row" style="text-align: center;display: initial;">
-                        <div class="form-group">
-                            <label>Filtrar x Categoria</label>
-                            <div class="input-group">
-
-                                @if(count($rowData_)!=0)
-                                <select class="custom-select" id="txt_id_servicio_filtrar"
-                                    name="txt_id_servicio_filtrar">
-                                    <option value="0">------------All ---------------- </option>
-                                    @foreach ($rowData_ as $rows)
-                                    <option value="{{$rows->id_estudio_categoria}}">{{$rows->nombre}}</option>
-                                    @endforeach
-                                </select>
-                                @endif
-
-                                <div class="input-group-append">
-                                    <button class="btn btn-outline-secondary" id="btnBuscar" type="button"><i
-                                            class="fa fa-search"></i></button>
-                                </div>
-                            </div>
-
-                        </div>
-
-                        <div class="card">
-                            <div class="card-header">
-                                <h3 class="card-title">DataTable de Estudios</h3>
-                            </div>
-                            <!-- /.card-header -->
-                            <div class="card-body" id="updateDiv"></div>
-                            <!-- /.card-body -->
-                        </div>
-                        <!-- /.card -->
-                    </div>
-                    <!-- /.col -->
-                </div>
-                <!-- /.row -->
-            </div>
-            <!-- /.container-fluid -->
-    </section>
-    <!-- /.content -->
-
-    <!-- Modal de CRUD-->
-    <div class="modal fade" id="modalTraining" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="txt_tituloModal">Actualizar Estudios</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form id="uploadFormTraining">
-                        <input type="hidden" name="txt_id_estudio" />
-                        <input type="hidden" name="isValues" />
-
-                        {{ csrf_field() }}
-                        <div class="row">
-                            <div class="col-sm-12">
-
-                                <div class="card card-primary">
-                                    <div class="card-body">
-                                        <div class="form-group">
-                                            <div class="form-group">
-                                                <label>Categoria</label>
-                                                <select class="form-control" name="txt_id_estudio_categoria">
-                                                    @foreach ($rowData_ as $rows)
-                                                    <option value="{{$rows->id_estudio_categoria}}">{{$rows->nombre}}
-                                                    </option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <div class="form-group">
-                                                <label>Titulo</label>
-                                                <input type="text" class="form-control" name="txt_titulo" required>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="txt_descripcion">Descripción</label>
-                                            <textarea class="form-control" name="txt_descripcion" rows="3"
-                                                placeholder="Enter ..." required></textarea>
-                                        </div>
-                                        <div class="form-group" style="text-align: center">
-                                            <div class="contain animated bounce">
-                                                <div class="alert"></div>
-                                                <div id='img_contain'>
-                                                    <img id="blah" align='middle'
-                                                        src="http://www.clker.com/cliparts/c/W/h/n/P/W/generic-image-file-icon-hi.png"
-                                                        alt="your image" title='' name="txt_url_image" />
-                                                </div>
-                                                <div class="input-group">
-                                                    <div class="custom-file">
-                                                        <input type="file" id="inputGroupFile01" name="image"
-                                                            class="imgInp custom-file-input"
-                                                            aria-describedby="inputGroupFileAddon01">
-                                                        <label class="custom-file-label" for="inputGroupFile01">Choose
-                                                            file</label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- <a href="/template_admin/img/modelo/modelo_galeria.jpg"
-                                                class="btn btn-primary btn-sm" download><i class="far fa-thumbs-up"></i>
-                                                Descargar Modelo</a> -->
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                            <button class="btn btn-primary" id="btn_sumit">Aplicar</button>
-                        </div>
-                    </form>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Modal Texto-->
-    <div class="modal fade" id="modalDescripcionTexto" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" style="max-width: 90%;" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="txt_tituloModal">Enlace Texto</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form id="uploadFormTexto">
-                        <input type="hidden" name="txt_id_actividad" />
-                        <input type="hidden" name="isValues" />
 
-                        {{ csrf_field() }}
-                        <div class="row">
-                            <div class="col-sm-12">
-
-                                <div class="card card-primary">
-                                    <div class="card-body">
-                                        <div class="form-group">
-                                            <label for="txt_descripcion">Descripción</label>
-                                            <textarea id="summernote" name="txt_descripcion_texto"></textarea>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                            <button class="btn btn-primary" id="btn_sumit">Aplicar</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
 
 </div>
 
@@ -349,6 +325,9 @@ $('#uploadFormTraining').on('submit', function(e) {
 
 });
 
+function openModalTags() {
+    $('#modalTags').modal('show')
+}
 
 function openModalTraining(id_estudio, isValues) {
     // CASO CLICK MODAL, ELIMINAR

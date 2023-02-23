@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Session;
         Route::get('/logout',                               'Auth\LoginController@logout');
         Route::get('/web_contacto',                         'Web\HomeController@web_contacto');
         Route::get('/linkActividad/{idActividad}',          'Web\HomeController@linkActividad');
+       
         Route::post('/web_registe_user',                    'Auth\RegisterController@web_registe_user')->name('web_registe_user');
         Route::get('/servicio_informacion/{id}',            'Web\HomeController@servicio_informacion');
 
@@ -38,15 +39,19 @@ use Illuminate\Support\Facades\Session;
         //::::::::::::::::::::::: WEB CONTROLLER FUNDACION ::::::::::::::::::::::::::
         Route::get('/web_fundacion',                    'Web\FundacionController@web_fundacion')->name('web_fundacion');
         //::::::::::::::::::::::: WEB CONTROLLER PUBLICACION ::::::::::::::::::::::::::
-        Route::get('/web_publicacion_internacional',    'Web\PublicacionesController@web_publicacion_internacional')->name('web_publicacion_internacional');
-        Route::get('/web_saludnatural',                 'Web\PublicacionesController@web_saludnatural')->name('web_saludnatural');
-        Route::get('/web_informativos',                 'Web\PublicacionesController@web_informativos')->name('web_informativos');
-        Route::get('/web_revistas',                     'Web\PublicacionesController@web_revistas')->name('web_revistas');
-        Route::get('/web_productos_saludables',         'Web\PublicacionesController@web_productos_saludables')->name('web_productos_saludables');
-        Route::get('/web_investigaciones',              'Web\PublicacionesController@web_investigaciones')->name('web_investigaciones');
-        Route::get('/web_barletta',                     'Web\PublicacionesController@web_barletta')->name('web_barletta');
-        Route::get('/web_boletines',                    'Web\PublicacionesController@web_boletines')->name('web_boletines');
-        Route::get('/web_libros',                       'Web\PublicacionesController@web_libros')->name('web_libros');
+        Route::get('/web_publicacion/{id}',                'Web\PublicacionesController@web_publicacion');
+        Route::get('/web_publicacion_link/{id}',           'Web\PublicacionesController@web_publicacion_link');
+
+
+        // Route::get('/web_publicacion',                  'Web\PublicacionesController@web_publicacion_internacional')->name('web_publicacion');
+        // Route::get('/web_saludnatural',                 'Web\PublicacionesController@web_saludnatural')->name('web_saludnatural');
+        // Route::get('/web_informativos',                 'Web\PublicacionesController@web_informativos')->name('web_informativos');
+        // Route::get('/web_revistas',                     'Web\PublicacionesController@web_revistas')->name('web_revistas');
+        // Route::get('/web_productos_saludables',         'Web\PublicacionesController@web_productos_saludables')->name('web_productos_saludables');
+        // Route::get('/web_investigaciones',              'Web\PublicacionesController@web_investigaciones')->name('web_investigaciones');
+        // Route::get('/web_barletta',                     'Web\PublicacionesController@web_barletta')->name('web_barletta');
+        // Route::get('/web_boletines',                    'Web\PublicacionesController@web_boletines')->name('web_boletines');
+        // Route::get('/web_libros',                       'Web\PublicacionesController@web_libros')->name('web_libros');
 
         //::::::::::::::::::::::: WEB CONTROLLER ACTIVIDAD ::::::::::::::::::::::::::
         Route::get('/web_actividad',                    'Web\ActividadesController@web_actividad')->name('web_actividad');
@@ -138,21 +143,17 @@ use Illuminate\Support\Facades\Session;
 
         //::::::::::::::::::::::: WEB CONTROLLER PUBLICACION ::::::::::::::::::::::::::
 
-       
+        Route::get('/admin_publicacion',                                'Admin\PublicacionesController@admin_publicacion');
         Route::get('/listarPublicaciones',                              'Admin\PublicacionesController@listarPublicaciones');
         Route::post('/crearPublicacion',                                'Admin\PublicacionesController@crearPublicacion');
         Route::post('/editarPublicacion',                               'Admin\PublicacionesController@editarPublicacion');
-
-
-        Route::post('/editServicioGaleria',                             'Admin\PublicacionesController@editServicioGaleria');
-        Route::get('/admin_nuestro_estudio',                            'Admin\PublicacionesController@admin_nuestro_estudio');
-        Route::get('/admin_publicacion_internacional',                  'Admin\PublicacionesController@admin_publicacion_internacional');
-        Route::post('/admin_publicacion_internacional_update',          'Admin\PublicacionesController@admin_publicacion_internacional_update');
-
-
-
-
+        Route::post('/updatePublicacion',                               'Admin\PublicacionesController@updatePublicacion');
         
+        // Route::get('/admin_nuestro_estudio',                            'Admin\PublicacionesController@admin_nuestro_estudio');
+        // Route::post('/admin_publicacion_internacional_update',          'Admin\PublicacionesController@admin_publicacion_internacional_update');
+
+
+       
 
         Route::get('/admin_saludnatural',                               'Admin\PublicacionesController@admin_saludnatural');
         Route::post('/admin_saludnatural_update',                       'Admin\PublicacionesController@admin_saludnatural_update');

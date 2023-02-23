@@ -15,9 +15,9 @@ class PublicacionesController extends Controller {
 
   //:::::::::::::::::::::::::: CRUD DE PUBLICACIONES ::::::::::::::::::::::::::
 
-  public function admin_publicacion_internacional() {
+  public function admin_publicacion() {
     $rowData_ = DB::table('web_publicaciones_categoria')->get()->toArray();
-    return view('admin.pages.publicacion.admin_publicacion_internacional')->with(compact('rowData_'));
+    return view('admin.pages.publicacion.admin_publicacion')->with(compact('rowData_'));
 
   }
 
@@ -132,23 +132,105 @@ class PublicacionesController extends Controller {
     }
   }
 
-
   public function editarPublicacion(Request $request) {
-      $rowData_ = DB::table('web_publicaciones')
-      ->where("web_publicaciones.id_publicacion", $request->txt_id_estudio)
+      $rowData_ = DB::table('web_publicaciones AS W')
+      // ->leftJoin('web_publicaciones AS P','W.id_publicacion','=','P.id_publicacion')
+      ->where("W.id_publicacion", $request->id_publicacion)
       ->get()->toArray();
+
       return json_encode($rowData_);
   }
 
- 
+  public function updatePublicacion(Request $request) 
+  {       
+    $file1 = $request->file('image1');
+    $file2 = $request->file('pdf');
+    if($file1!=null && $file2!=null)
+    {
+        //========================= IMAGEN 1 =====================================
+            $url_imagen1 =  DB::table('web_publicaciones')->where('id_publicacion', '=', $request->id_publicacion)->get();
+            
+            if(file_exists(str_replace('/img/', 'img/',  $url_imagen1[0]->url_image1))){
+                unlink(str_replace('/img/', 'img/',  $url_imagen1[0]->url_image1));
+            }
+            
+            $filename1  =  time() .'_'.$file1->getClientOriginalName();
+            $path = "img/mc_publicacion";
+            $file1->move($path,$filename1);
+       
+            //=========================  PDF =====================================
+            if(file_exists(str_replace('/pdf/', 'pdf/',  $url_imagen1[0]->url_pdf))){
+                unlink(str_replace('/pdf/', 'pdf/',  $url_imagen1[0]->url_pdf));
+            }
+            
+            $filename_pdf  =  time() .'_'.$file2->getClientOriginalName();
+            $path_pdf = "pdf/mc_pdf";
+            $file2->move($path_pdf,$filename_pdf);
+            //=========================? ===================================== 
 
+            $data= DB::table('web_publicaciones')->where("id_publicacion",$request->id_publicacion)->update([
+                'title1' => $request->txt_titulo1,
+                'descripcion1' => $request->txt_descripcion1,
+                'descripcion2' => $request->txt_descripcion2,
+                'descripcion3' => $request->txt_descripcion3,
+                'url_image1' => '/img/mc_publicacion/'.$filename1, 
+                'url_pdf' => '/pdf/mc_pdf/'.$filename_pdf, 
+              ]); 
 
+    }else if($file1!=null && $file2==null)
+    {
+        //========================= IMAGEN 1 =====================================
+            $url_imagen1 =  DB::table('web_publicaciones')->where('id_publicacion', '=', $request->id_publicacion)->get();
+            
+            if(file_exists(str_replace('/img/', 'img/',  $url_imagen1[0]->url_image1))){
+                unlink(str_replace('/img/', 'img/',  $url_imagen1[0]->url_image1));
+            }
+            
+            $filename1  =  time() .'_'.$file1->getClientOriginalName();
+            $path = "img/mc_publicacion";
+            $file1->move($path,$filename1);
+       
+            $data= DB::table('web_publicaciones')->where("id_publicacion",$request->id_publicacion)->update([
+                'title1' => $request->txt_titulo1,
+                'descripcion1' => $request->txt_descripcion1,
+                'descripcion2' => $request->txt_descripcion2,
+                'descripcion3' => $request->txt_descripcion3,
+                'url_image1' => '/img/mc_publicacion/'.$filename1, 
+              ]); 
 
-  public function editServicioGaleria(Request $request) {
-    $rowData_ = DB::table('web_publicaciones')
-    ->where("web_publicaciones.id_publicacion", $request->txt_id_estudio)
-    ->get()->toArray();
-    return json_encode($rowData_);
+    }else if($file1==null && $file2!=null)
+    {
+        //========================= IMAGEN 1 =====================================
+            $url_imagen1 =  DB::table('web_publicaciones')->where('id_publicacion', '=', $request->id_publicacion)->get();
+            
+            //=========================  PDF =====================================
+            if(file_exists(str_replace('/pdf/', 'pdf/',  $url_imagen1[0]->url_pdf))){
+                  unlink(str_replace('/pdf/', 'pdf/',  $url_imagen1[0]->url_pdf));
+              }
+              
+              $filename_pdf  =  time() .'_'.$file2->getClientOriginalName();
+              $path_pdf = "pdf/mc_pdf";
+              $file2->move($path_pdf,$filename_pdf);
+              //=========================? ===================================== 
+       
+            $data= DB::table('web_publicaciones')->where("id_publicacion",$request->id_publicacion)->update([
+                'title1' => $request->txt_titulo1,
+                'descripcion1' => $request->txt_descripcion1,
+                'descripcion2' => $request->txt_descripcion2,
+                'descripcion3' => $request->txt_descripcion3,
+                'url_pdf' => '/pdf/mc_pdf/'.$filename_pdf, 
+              ]); 
+
+    }else{
+          $data=  DB::table('web_publicaciones')->where("id_publicacion",$request->id_publicacion)->update([
+            'title1' => $request->txt_titulo1,
+            'descripcion1' => $request->txt_descripcion1,
+            'descripcion2' => $request->txt_descripcion2,
+            'descripcion3' => $request->txt_descripcion3,
+          ]); 
+        }
+
+    return $data;
   }
 
 
